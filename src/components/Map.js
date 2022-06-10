@@ -38,7 +38,7 @@ function Map() {
     }, [])
 
     const onInfo = infoWindow => {
-        console.log('infoWindow: ', infoWindow)
+        // console.log('infoWindow: ', infoWindow)
     }
     const encoded = "oq|xHyfgaBRw@To@bAuB^m@z@gAp@q@`@]fBoA~BwApD}B|AeAdC_Bj@a@dDmBzCsBx@c@tGaE~EkDhBgAjGeEpAaA`BcAn@k@zAwAzA}AvAiB~AsC|@gBrAwClA}Cz@kCbAcErAqHr@qFf@oH\\}JFoE@qEFyENkKJaETuOT_Dd@_DbA_Ij@qF@@";
     const decoded = decode(encoded, 5);

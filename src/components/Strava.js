@@ -41,7 +41,7 @@ function Strava() {
     // )
 // }
 
-    //2 Sposób
+
     //Strava basics
     let clientID = "87069";
     let clientSecret = "1155a03ba6c770d31356983d5b4710756e90f9e0";
@@ -74,10 +74,10 @@ function Strava() {
     // }
 
     function getSegments(accessToken){
-        console.log(callStarredSegments + accessToken)
+        // console.log(callStarredSegments + accessToken)
         fetch(callStarredSegments + accessToken)
             .then(res => res.json())
-            .then(data => setSegments(data))
+            .then(data => setSegments(data) & setIsLoading(prev => !prev))
             .catch(e => console.log(e))
     }
 
@@ -88,31 +88,52 @@ function Strava() {
     //         return activities.length
     //     }
     // }
-    function handleSegment() {
 
-    }
+    // const SegmentsList = ({segments}) => {
+    //     return (
+    //         <select className="segments_list">
+    //             {segments.map((el)=>
+    //                 <option key={el.id} className="segments_item">{el.name}</option>
+    //             )}
+    //         </select>
+    //     )
+    // }
+
     function showSegments() {
-        // if(isLoading) return <>LOADING</>
-        // if(!isLoading) {
-        // let array = segments;
-        // array.forEach( segments => segments.name)
-        // console.log(array)
-        // console.log(segments[0].name)
-        return (
-            <div>
-                <h1>Liczba śledzonych segmentów to: <strong>{segments.length}</strong></h1>
-                <h2>Lista segmentów:</h2>
-                <select className="segments_list">
-                {segments.map(segment => <option key={segment.id} className="segments_item">{segment.name}</option>)}
-                </select>
-            </div>
-        )
-    }
+        if(isLoading) return <>LOADING</>
+        if(!isLoading) {
+        console.log(segments)
+        return segments.length
+        }
 
+        // return (
+        //     <>
+        //         <h1>Liczba śledzonych segmentów to: <strong>{segments.length}</strong></h1>
+        //         <h2>Lista segmentów:</h2>
+        //         {/*<SegmentsList segments={segments}/>*/}
+        //         <select className="segments_list">
+        //         {!isLoading ? `LOADING` : segments.map(segment => <option key={segment.id} className="segments_item">{segment.name}</option>)}
+        //         </select>
+        //     </>
+        // )
+    }
+    // console.log(segments)
     return (
+        // <div>
+        //     <h1>Liczba śledzonych segmentów to: <strong>{segments.length}</strong></h1>
+        //     <h2>Lista segmentów:</h2>
+        //     {/*<SegmentsList segments={segments}/>*/}
+        //     <select className="segments_list">
+        //         {segments.map((segment) => <option key={segment.id} className="segments_item">{segment.name}</option>)}
+        //     </select>
+        // </div>
         <div className="Segments">
-            {/*{showActivities()}*/}
-            {showSegments()}
+            <h1>Liczba śledzonych segmentów to: <strong>{showSegments()}</strong></h1>
+            <h2>Lista segmentów:</h2>
+            {/*<SegmentsList segments={segments}/>*/}
+            <select className="segments_list">
+                {isLoading === true ? `LOADING` : segments.map(segment => <option key={segment.id} className="segments_item">{segment.name}</option>)}
+            </select>
         </div>
     );
 }
