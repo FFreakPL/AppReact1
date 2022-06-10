@@ -53,13 +53,13 @@ function Register() {
                     className="register__btn register__google"
                     onClick={signInWithGoogle}
                 >
-                    Zarejestruj z Google
+                    <span className="button-icon">Zarejestruj się z   <i className="fa-brands fa-google"></i></span>
                 </button>
                 <button
                     className="register__btn register__facebook"
                     onClick={signInWithFacebook}
                 >
-                    Zarejestruj z Facebook
+                    <span className="button-icon">Zarejestruj się z   <i className="fa-brands fa-facebook"></i></span>
                 </button>
                 <div>
                     Masz już konto? <Link to="/">Zaloguj się</Link> teraz.

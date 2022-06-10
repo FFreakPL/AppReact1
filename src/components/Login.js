@@ -39,10 +39,10 @@ function Login() {
                     Zaloguj się
                 </button>
                 <button className="login__btn login__google" onClick={signInWithGoogle}>
-                    Zaloguj się z Google
+                    <span className="button-icon">Zaloguj się z   <i className="fa-brands fa-google"></i></span>
                 </button>
                 <button className="login__btn login__facebook" onClick={signInWithFacebook}>
-                    Zaloguj się z Facebook
+                    <span className="button-icon">Zaloguj się z   <i className="fa-brands fa-facebook"></i></span>
                 </button>
                 <div>
                     <Link to="/reset">Zapomniałem hasła</Link>

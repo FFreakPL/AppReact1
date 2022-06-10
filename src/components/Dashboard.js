@@ -4,6 +4,9 @@ import { useNavigate } from "react-router-dom";
 import "./Dashboard.css";
 import { auth, db, logout } from "./firebase";
 import { query, collection, getDocs, where } from "firebase/firestore";
+import Map from "./Map";
+import Strava from "./Strava";
+
 function Dashboard() {
     const [user, loading, error] = useAuthState(auth);
     const [name, setName] = useState("");
@@ -25,14 +28,18 @@ function Dashboard() {
         fetchUserName();
     }, [user, loading]);
     return (
-        <div className="dashboard">
-            <div className="dashboard__container">
-                Zalogowano jako
-                <div>{name}</div>
-                <div>{user?.email}</div>
-                <button className="dashboard__btn" onClick={logout}>
-                    Wyloguj
-                </button>
+        <div>
+            <Map/>
+            <Strava/>
+            <div className="dashboard">
+                <div className="dashboard__container">
+                 Zalogowano jako
+                 <div>{name}</div>
+                 <div>{user?.email}</div>
+                 <button className="dashboard__btn" onClick={logout}>
+                     Wyloguj
+                  </button>
+             </div>
             </div>
         </div>
     );
