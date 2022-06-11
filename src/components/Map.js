@@ -1,29 +1,26 @@
-import React, { Component } from "react";
-// import OlMap from "ol/Map";
-// import OlView from "ol/View";
-// import OlLayerTile from "ol/layer/Tile";
-// import OlSourceOSM from "ol/source/OSM";
+import React, { Component,  useState, useCallback } from "react";
 import "./Map.css";
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
 import { Polyline, InfoWindow } from '@react-google-maps/api';
 import { BicyclingLayer } from '@react-google-maps/api';
 import { decode, encode } from "@googlemaps/polyline-codec";
+// import Strava from "./Strava";
 
-
-const center = {
-    lat: 51.43513,
-    lng: 16.09784
-}
-
-function Map() {
+function Map({props}) {
     const { isLoaded } = useJsApiLoader({
         id: 'google-map-script',
         googleMapsApiKey: "AIzaSyAQ9NEuKCSS3vgmEDZLGxMfmBZUgSJN4mw"
     })
 
-    const [map, setMap] = React.useState(null)
+    const center =
+        {
+        lat: props.start_latlng[0],
+        lng: props.start_latlng[1]
+    }
 
-    const onLoad = React.useCallback(function callback(map) {
+    const [map, setMap] = useState(null)
+
+    const onLoad = useCallback(function callback(map) {
         const bounds = new window.google.maps.LatLngBounds(center);
         map.fitBounds(bounds);
         setMap(map)
@@ -33,37 +30,40 @@ function Map() {
     // }
 
 
-    const onUnmount = React.useCallback(function callback(map) {
+    const onUnmount = useCallback(function callback(map) {
         setMap(null)
     }, [])
 
     const onInfo = infoWindow => {
-        // console.log('infoWindow: ', infoWindow)
+
     }
-    const encoded = "oq|xHyfgaBRw@To@bAuB^m@z@gAp@q@`@]fBoA~BwApD}B|AeAdC_Bj@a@dDmBzCsBx@c@tGaE~EkDhBgAjGeEpAaA`BcAn@k@zAwAzA}AvAiB~AsC|@gBrAwClA}Cz@kCbAcErAqHr@qFf@oH\\}JFoE@qEFyENkKJaETuOT_Dd@_DbA_Ij@qF@@";
+    const encoded = props.map.polyline;
     const decoded = decode(encoded, 5);
 
-    const segmentTest = decoded.map(function(row) {
+    const segmentRoute = decoded.map(function(row) {
         return {
             lat: row[0],
             lng: row[1]
         }
     })
-    // const hawkHillSegment = decoded.map(([lat,lng])=> ({[lat] : lng}));
 
-
-// NAPISAC FUNKCJE KTÓRA BEDZIE TWORZYLA OBIEKT SEGMENTU [{lat: xxx, lng: -xxx},...]
-        // {lat: 25.774, lng: -80.190},
-        // {lat: 18.466, lng: -66.118},
-        // {lat: 32.321, lng: -64.757},
-        // {lat: 25.774, lng: -80.190}
     const divStyle = {
         background: `white`,
-        border: `1px solid #ccc`,
-        padding: 5
+        fontSize: `1rem`,
     }
-
+    const polylineStyle = {
+        strokeColor: '#FF0000',
+        strokeOpacity: 0.8,
+        strokeWeight: 2,
+        fillColor: '#FF0000',
+        fillOpacity: 0.35,
+        clickable: true,
+        draggable: false,
+        editable: false,
+        visible: true,
+    }
     return isLoaded ? (
+        <div className="map">
         <GoogleMap
             id="map"
             center={center}
@@ -73,16 +73,19 @@ function Map() {
         >
             { /* Child components, such as markers, info windows, etc. */ }
             <Polyline
-                path={segmentTest}
-                strokeColor="#0000FF"
-                strokeOpacity={0.8}
-                strokeWeight={2} />
-            <InfoWindow
                 onLoad={onInfo}
-                position={segmentTest[0]}
+                path={segmentRoute}
+                options={polylineStyle}
+                onClick={onInfo}
+            />
+            <InfoWindow
+                // onLoad={onInfo}
+                position={segmentRoute[0]}
                 >
                 <div style={divStyle}>
-                    <h3>gaz podłoga ze Szklar do Obory</h3>
+                    <p>{props.name}</p>
+                    <p>Distance: {props.distance}m</p>
+                    <p>Elevation gain: {props.total_elevation_gain}</p>
                 </div>
             </InfoWindow>
             {/*<BicyclingLayer*/}
@@ -90,6 +93,7 @@ function Map() {
             {/*/>*/}
             <></>
         </GoogleMap>
+        </div>
     ) : <></>
 }
 

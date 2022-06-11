@@ -1,10 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect} from 'react';
 import "./Strava.css";
+import Map from "./Map";
+import Weather from "./Weather";
+//
+
 
 function Strava() {
     const [isLoading, setIsLoading] = useState(true)
     // const [activities, setActivities] = useState({})
-    const [segments, setSegments] = useState({})
+    const [segments, setSegments] = useState([])
+    const [currentSegment, setCurrentSegment] = useState(null)
+    const [current, setCurrent] = useState(null);
 
     // const authLink = "https://www.strava.com/oauth/token";
     //
@@ -53,6 +59,7 @@ function Strava() {
     // access token and https
     // const accessToken = "069c016f83dc5fbe270eabad7d47e18056115501"
     const callActivities = `https://www.strava.com/api/v3/athlete/activities?access_token=069c016f83dc5fbe270eabad7d47e18056115501`
+    const currentStarredSegments = `https://www.strava.com/api/v3/segments/`
     const callStarredSegments = `https://www.strava.com/api/v3/segments/starred?page=1&per_page=200&access_token=`
 
     useEffect(() => {
@@ -62,17 +69,25 @@ function Strava() {
             .then(res => res.json())
             // .then(result => getActivities(result.access_token))
             .then(result => getSegments(result.access_token))
+        //     .then(result => currentTokenCode === result.access_token)
+        // console.log(currentTokenCode)
     }, [callRefresh])
 
-    // use current access token to call all activities
-    // function getActivities(){
-    //     console.log(callActivities)
-    //     fetch(callActivities)
+    useEffect(() => {
+        if (!currentSegment) return;
+        fetch(`${currentStarredSegments}${currentSegment}?access_token=36091c9096198567dad3be9129839cbdf6e476d9`)
+            .then(r => r.json())
+            .then(data => setCurrent(data))
+    }, [currentSegment])
+
+    //     function getSegmentsId(accessToken) {
+    //     fetch(currentActivities + currentSegment + accessToken)
     //         .then(res => res.json())
-    //         .then(data => setActivities(data), setIsLoading(prev => !prev))
+    //         .then(data => setCurrent(data) & setIsLoading(prev => !prev))
     //         .catch(e => console.log(e))
     // }
 
+    // use current access token to call all segments
     function getSegments(accessToken){
         // console.log(callStarredSegments + accessToken)
         fetch(callStarredSegments + accessToken)
@@ -100,9 +115,9 @@ function Strava() {
     // }
 
     function showSegments() {
-        if(isLoading) return <>LOADING</>
-        if(!isLoading) {
-        console.log(segments)
+        if(!segments.length) return <>LOADING</>
+        if(segments.length) {
+        // console.log(segments)
         return segments.length
         }
 
@@ -117,6 +132,14 @@ function Strava() {
         //     </>
         // )
     }
+
+    function handleChange({ target: { value }}) {
+        setCurrentSegment(value)
+    }
+    if(current){
+        console.log(current);
+        console.log(current.map.polyline)}
+    // console.log(current.map.polyline)
     // console.log(segments)
     return (
         // <div>
@@ -127,14 +150,22 @@ function Strava() {
         //         {segments.map((segment) => <option key={segment.id} className="segments_item">{segment.name}</option>)}
         //     </select>
         // </div>
+        <>
+            {(current) &&
+                // <SegmentContext.Provider value={current}>
+                    <Map props={current}/>
+                // </SegmentContext.Provider>
+            }
+            {(current) && <Weather props={current}/>}
         <div className="Segments">
             <h1>Liczba śledzonych segmentów to: <strong>{showSegments()}</strong></h1>
             <h2>Lista segmentów:</h2>
             {/*<SegmentsList segments={segments}/>*/}
-            <select className="segments_list">
-                {isLoading === true ? `LOADING` : segments.map(segment => <option key={segment.id} className="segments_item">{segment.name}</option>)}
+            <select className="segments_list" onChange={handleChange}>
+                {!segments.length ? `LOADING` : segments.map(segment => <option key={segment.id} value={segment.id} className="segments_item">{segment.name}</option>)}
             </select>
         </div>
+        </>
     );
 }
 
