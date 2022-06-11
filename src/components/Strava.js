@@ -75,7 +75,7 @@ function Strava() {
 
     useEffect(() => {
         if (!currentSegment) return;
-        fetch(`${currentStarredSegments}${currentSegment}?access_token=36091c9096198567dad3be9129839cbdf6e476d9`)
+        fetch(`${currentStarredSegments}${currentSegment}?access_token=aeb1d65e2ccd4639453b9d4f38b42bb1d17e0c4a`)
             .then(r => r.json())
             .then(data => setCurrent(data))
     }, [currentSegment])
@@ -137,8 +137,8 @@ function Strava() {
         setCurrentSegment(value)
     }
     if(current){
-        console.log(current);
-        console.log(current.map.polyline)}
+        console.log(current)}
+        // console.log(current.map.polyline)}
     // console.log(current.map.polyline)
     // console.log(segments)
     return (

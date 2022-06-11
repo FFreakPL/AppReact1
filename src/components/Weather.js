@@ -42,13 +42,13 @@ function Weather({props}) {
     //     fetchJSON();
     // },[lat.long])
     return (
-        <div className="App">
+        <>
             {/*{(typeof data != 'undefined') ? (*/}
                 <WeatherComponent weatherData={data} props={props}/>
             {/*): (*/}
             {/*    <div></div>*/}
             {/*)}*/}
-        </div>
+        </>
     );
 }
 
