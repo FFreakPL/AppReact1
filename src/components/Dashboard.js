@@ -31,8 +31,6 @@ function Dashboard() {
 
     return (
         <div>
-            {/*<Map/>*/}
-            {/*<Weather/>*/}
             <Strava/>
             <div className="dashboard">
                 <div className="dashboard__container">

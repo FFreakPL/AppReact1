@@ -79,7 +79,6 @@ function Map({props}) {
                 onClick={onInfo}
             />
             <InfoWindow
-                // onLoad={onInfo}
                 position={segmentRoute[0]}
                 >
                 <div style={divStyle}>

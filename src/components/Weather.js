@@ -34,20 +34,13 @@ function Weather({props}) {
     }, [lat,long])
 
 
-    //     const fetchJSON = async () => {
-    //         const response = await fetch(callForecast);
-    //         let json = await response.json();
-    //         setData(json)
-    //     };
-    //     fetchJSON();
-    // },[lat.long])
     return (
         <>
-            {/*{(typeof data != 'undefined') ? (*/}
+            {(data.length !== 0) ?
                 <WeatherComponent weatherData={data} props={props}/>
-            {/*): (*/}
-            {/*    <div></div>*/}
-            {/*)}*/}
+            :
+                <div></div>
+            }
         </>
     );
 }
