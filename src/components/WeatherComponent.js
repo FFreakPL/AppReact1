@@ -4,11 +4,17 @@ import "./WeatherComponent.css";
 // import moment from 'moment';
 
 function WeatherComponent({weatherData, props,}) {
-    console.log(weatherData);
+    console.log(weatherData.list[0].main.temp);
     return(
         <>
-                <div className="weather">Miasto: {props.city}
-                    <p>Aktualna temperatura: {weatherData.main.temp}</p>
+                <div className="weather">
+                    <h1>{props.name}</h1>
+                    <h2>Prognoza na 5 dni</h2>
+                    <p>{weatherData.list[3].dt_txt}: <strong>{weatherData.list[3].main.temp}</strong></p>
+                    <p>{weatherData.list[11].dt_txt}: <strong>{weatherData.list[11].main.temp}</strong></p>
+                    <p>{weatherData.list[19].dt_txt}: <strong>{weatherData.list[19].main.temp}</strong></p>
+                    <p>{weatherData.list[27].dt_txt}: <strong>{weatherData.list[27].main.temp}</strong></p>
+                    <p>{weatherData.list[35].dt_txt}: <strong>{weatherData.list[35].main.temp}</strong></p>
                 </div>
                 {/*// /!*<p>Temprature: {weatherData.main.temp} &deg;C</p>*!/*/}
                 {/*// /!*<p>Sunrise: {new Date(weatherData.sys.sunrise * 1000).toLocaleTimeString('en-IN')}</p>*!/*/}

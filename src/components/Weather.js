@@ -21,29 +21,33 @@ function Weather({props}) {
     //     console.log(lat);
     //     console.log(long);
     // })
+    // https://api.openweathermap.org/data/2.5/forecast?lat=16&lon=15&units=metric&appid=aad0a4a7e4ef8608884c12de55bea733
 
-    const callForecast = `api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&units=metric&appid=${REACT_APP_API_KEY}`;
+
+    const callForecast = `${REACT_APP_API_URL}/forecast?lat=${lat}&lon=${long}&units=metric&appid=${REACT_APP_API_KEY}`;
     const callWeather = `${REACT_APP_API_URL}/weather/?lat=${lat}&lon=${long}&units=metric&APPID=${REACT_APP_API_KEY}`
 
     useEffect(() => {
-        fetch(callWeather)
+        fetch(callForecast)
                 .then(res => res.json())
                 .then(result => setData(result))
     }, [lat,long])
-    // function getWeather(){
-    //     fetch(callWeather)
-    //         .then(res => res.json())
-    //         .then(result => setData(result))
-    // }
-    // getWeather();
+
+
+    //     const fetchJSON = async () => {
+    //         const response = await fetch(callForecast);
+    //         let json = await response.json();
+    //         setData(json)
+    //     };
+    //     fetchJSON();
+    // },[lat.long])
     return (
         <div className="App">
-            {(typeof data.main != 'undefined') ? (
+            {/*{(typeof data != 'undefined') ? (*/}
                 <WeatherComponent weatherData={data} props={props}/>
-            ): (
-                <div></div>
-            )}
-
+            {/*): (*/}
+            {/*    <div></div>*/}
+            {/*)}*/}
         </div>
     );
 }
