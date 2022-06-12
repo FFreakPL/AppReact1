@@ -1,0 +1,9 @@
+.weather_icon {
+    width: 10rem;
+    height: 10rem;
+}
+.weather_item {
+    padding: 1rem;
+    border: 2px solid black;
+    border-radius: 2rem;
+}

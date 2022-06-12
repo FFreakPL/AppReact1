@@ -1,8 +1,10 @@
 #map {
-    width: 60%;
-    height: 360px;
-    margin: 0 auto;
+    width: 80vw;
+    height: 35vh;
     padding: 2rem;
+    margin-top: 1rem;
+    border: 5px solid white;
+    border-radius: 1rem;
 }
 
 .hidden {

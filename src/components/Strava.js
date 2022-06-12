@@ -75,7 +75,7 @@ function Strava() {
 
     useEffect(() => {
         if (!currentSegment) return;
-        fetch(`${currentStarredSegments}${currentSegment}?access_token=aeb1d65e2ccd4639453b9d4f38b42bb1d17e0c4a`)
+        fetch(`${currentStarredSegments}${currentSegment}?access_token=e4f5b7f7c2a98efcaf6675d12394fdcf848bccb6`)
             .then(r => r.json())
             .then(data => setCurrent(data))
     }, [currentSegment])

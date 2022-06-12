@@ -26,9 +26,9 @@ function Weather({props}) {
 
     const callForecast = `${REACT_APP_API_URL}/forecast?lat=${lat}&lon=${long}&units=metric&appid=${REACT_APP_API_KEY}`;
     const callWeather = `${REACT_APP_API_URL}/weather/?lat=${lat}&lon=${long}&units=metric&APPID=${REACT_APP_API_KEY}`
-
+    const callForecastForFourDays = `${REACT_APP_API_URL}/onecall?lat=${lat}&lon=${long}&exclude=hourly,minutely&units=metric&appid=${REACT_APP_API_KEY}`
     useEffect(() => {
-        fetch(callForecast)
+        fetch(callForecastForFourDays)
                 .then(res => res.json())
                 .then(result => setData(result))
     }, [lat,long])

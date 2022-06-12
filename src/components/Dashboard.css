@@ -1,17 +1,18 @@
 .dashboard {
-    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 3rem;
+    padding: 1rem;
 }
 .dashboard__container {
     display: flex;
     flex-direction: column;
     text-align: center;
     background-color: #dcdcdc;
-    padding: 30px;
+    padding: 1.75rem;
     opacity: 0.9;
+    border: 3px solid #dcdcdc;
+    border-radius: 12px;
 }
 .dashboard__btn {
     padding: 10px;
@@ -20,6 +21,8 @@
     border: none;
     color: white;
     background-color: black;
+    border: 2px solid black;
+    border-radius: 30px;
 }
 .dashboard div {
     margin-top: 7px;
