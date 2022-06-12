@@ -43,22 +43,22 @@ function WeatherComponent({weatherData, props,}) {
                     <div className="weather_container">
                         <div className="weather_item">
                             <p>{tomorrow.getDate()} {month[tomorrow.getMonth()]}</p>
-                            <img src={imgDayOne} alt={imgDayOneAlt} width={100} height={100}/>
+                            <img src={imgDayOne} alt={imgDayOneAlt} className="weather_icon"/>
                             <p><strong>{(weatherData.daily[1].temp.day).toFixed(0)}°C</strong></p>
                         </div>
                         <div className="weather_item">
                             <p>{secondDay.getDate()} {month[secondDay.getMonth()]}</p>
-                            <img src={imgDayTwo} alt={imgDayTwoAlt} width={100} height={100}/>
+                            <img src={imgDayTwo} alt={imgDayTwoAlt} className="weather_icon"/>
                             <p><strong>{(weatherData.daily[2].temp.day).toFixed(0)}°C</strong></p>
                         </div>
                         <div className="weather_item">
                             <p>{thirdDay.getDate()} {month[thirdDay.getMonth()]}</p>
-                            <img src={imgDayThree} alt={imgDayThreeAlt} width={100} height={100}/>
+                            <img src={imgDayThree} alt={imgDayThreeAlt} className="weather_icon"/>
                             <p><strong>{(weatherData.daily[3].temp.day).toFixed(0)}°C</strong></p>
                         </div>
                         <div className="weather_item">
                             <p>{fourthDay.getDate()} {month[fourthDay.getMonth()]}</p>
-                            <img src={imgDayFour} alt={imgDayFourAlt} width={100} height={100}/>
+                            <img src={imgDayFour} alt={imgDayFourAlt} className="weather_icon"/>
                             <p><strong>{(weatherData.daily[4].temp.day).toFixed(0)}°C</strong></p>
                         </div>
                         {/*<div className="weather_item">*/}

@@ -11,42 +11,9 @@ function Strava() {
     const [segments, setSegments] = useState([])
     const [currentSegment, setCurrentSegment] = useState(null)
     const [current, setCurrent] = useState(null);
+    const [token, setToken] = useState()
 
     // const authLink = "https://www.strava.com/oauth/token";
-    //
-    // function getActivities(res){
-    //     console.log(res);
-    //     // const activitiesLink = `https://www.strava.com/api/v3/athlete/activities?access_token=${res.access_token}`
-    //     // fetch(activitiesLink)
-    //     //     .then((res) => console.log(res.json()))
-    // }
-    // getActivities();
-    // useEffect(() => {
-    //     fetch(authLink,{
-    //         method: "POST",
-    //         headers: {
-    //             "Accept": "application/json, text/plain, */*",
-    //             "Content-type": "application/json"
-    //         },
-    //         body: JSON.stringify({
-    //             client_id: "87069",
-    //             client_secret: "1155a03ba6c770d31356983d5b4710756e90f9e0",
-    //             refresh_token: "49ea1a2d7fe18daf857b7f43c82cf13e539d31b1",
-    //             grant_type: "refresh_token"
-    //         })
-    //     }).then(res => res.json())
-    //         .then(res => getActivities(res))
-    // },[authLink])
-    //
-    //
-    // // console.log(getActivities());
-    // return (
-    //     <div className="Activities">
-    //         {/*{getActivities()}*/}
-    //     </div>
-    // )
-// }
-
 
     //Strava basics
     let clientID = "87069";
@@ -67,10 +34,10 @@ function Strava() {
             method: 'POST'
         })
             .then(res => res.json())
-            // .then(result => getActivities(result.access_token))
             .then(result => getSegments(result.access_token))
-        //     .then(result => currentTokenCode === result.access_token)
-        // console.log(currentTokenCode)
+            // .then(result => getCurrent(result.access_token))
+            // .then(result => setToken(prevToken => result.access_token))
+
     }, [callRefresh])
 
     useEffect(() => {
@@ -79,6 +46,13 @@ function Strava() {
             .then(r => r.json())
             .then(data => setCurrent(data))
     }, [currentSegment])
+
+    // function getCurrent(accessToken){
+    //     fetch(currentStarredSegments + currentSegment + accessToken)
+    //         .then(res => res.json())
+    //         .then(data => setCurrent(data) & setIsLoading(prev => !prev))
+    //         .catch(e => console.log(e))
+    // }
 
     //     function getSegmentsId(accessToken) {
     //     fetch(currentActivities + currentSegment + accessToken)
