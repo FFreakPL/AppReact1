@@ -63,6 +63,7 @@ function Map({props}) {
         editable: false,
         visible: true,
     }
+
     return isLoaded ? (
         <div className="map">
         <GoogleMap

@@ -11,6 +11,9 @@ import Weather from "./Weather";
 function Dashboard() {
     const [user, loading, error] = useAuthState(auth);
     const [name, setName] = useState("");
+    const [display, setDisplay] = useState("")
+    const [backgroundColor, setBackgroundColor] = useState("")
+    const [border, setBorder] = useState("")
     const navigate = useNavigate();
     const fetchUserName = async () => {
         try {
@@ -29,17 +32,35 @@ function Dashboard() {
         fetchUserName();
     }, [user, loading]);
 
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            setDisplay(prevState => "none")
+        },3000)
+    });
+
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            setBackgroundColor(prevState => "hsla(89, 43%, 51%, 0)");
+        },3000)
+    });
+
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            setBorder(prevState => "0px solid");
+        },3000)
+    });
+
     return (
         <div className="app_container">
             <Strava/>
             <div className="dashboard">
-                <div className="dashboard__container">
-                 Zalogowano jako
-                 <div>{name}</div>
-                 <div>{user?.email}</div>
-                 <button className="dashboard__btn" onClick={logout}>
-                     Wyloguj
-                  </button>
+                <div className="dashboard__container" style={{backgroundColor: backgroundColor, border: border}}>
+                    <span  style={{display: display}}>Zalogowano jako</span>
+                 <div  style={{display: display}}>{name}</div>
+                 <div  style={{display: display}}>{user?.email}</div>
+                    <button className="dashboard__btn" onClick={logout}>
+                        Wyloguj
+                    </button>
              </div>
             </div>
         </div>

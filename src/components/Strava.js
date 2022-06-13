@@ -12,6 +12,7 @@ function Strava() {
     const [currentSegment, setCurrentSegment] = useState(null)
     const [current, setCurrent] = useState(null);
     const [token, setToken] = useState()
+    const [display, setDisplay] = useState("")
 
     // const authLink = "https://www.strava.com/oauth/token";
 
@@ -46,7 +47,7 @@ function Strava() {
             .then(result => localStorage.setItem(token, result.access_token))
     }, [callRefresh])
 
-//sprobowac uzyc localstorage
+
     useEffect(() => {
         if (!currentSegment) return;
         fetch(`${currentStarredSegments}${currentSegment}?access_token=${localStorage.getItem(token)}`)
@@ -63,13 +64,7 @@ function Strava() {
             .catch(e => console.log(e))
     }
 
-    function showSegments() {
-        if(!segments.length) return <>LOADING</>
-        if(segments.length) {
-        // console.log(segments)
-        return segments.length
-        }
-    }
+
 
     function handleChange({ target: { value }}) {
         setCurrentSegment(value)
@@ -83,15 +78,31 @@ function Strava() {
         return a.name.localeCompare(b.name)
     });
 
+    const segmentsRiding = segmentsSorted.filter(function(a) {
+        return a.activity_type === "Ride"
+    })
+    function showSegments() {
+        if(!segmentsRiding.length) return <>LOADING</>
+        if(segmentsRiding.length) {
+            // console.log(segments)
+            return segmentsRiding.length
+        }
+    }
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            setDisplay(prevState => "none");
+        },3000)
+    });
+
     return (
         <>
-            {(current) && <Map props={current}/>}
+            {(current) && <Map props={current} segments={segmentsRiding}/>}
             {(current) && <Weather props={current}/>}
         <div className="Segments">
-            <h1>Liczba śledzonych segmentów to: <strong>{showSegments()}</strong></h1>
-            <h2>Lista segmentów:</h2>
+            <h1 style={{display: display}}>Liczba śledzonych segmentów to: <strong>{showSegments()}</strong></h1>
+            <h2>Wybierz segment:</h2>
             <select className="segments_list" onChange={handleChange}>
-                {!segments.length ? `LOADING` : segmentsSorted.map(segment => <option key={segment.id} value={segment.id} className="segments_item">{segment.name}</option>)}
+                {!segments.length ? `LOADING` : segmentsRiding.map(segment => <option key={segment.id} value={segment.id} className="segments_item">{segment.name}</option>)}
             </select>
         </div>
         </>

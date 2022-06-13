@@ -9,7 +9,7 @@
     flex-direction: column;
     text-align: center;
     background-color: #dcdcdc;
-    padding: 1.75rem;
+    padding: 1rem;
     opacity: 0.9;
     border: 3px solid #dcdcdc;
     border-radius: 12px;
@@ -17,7 +17,6 @@
 .dashboard__btn {
     padding: 10px;
     font-size: 18px;
-    margin-top: 10px;
     border: none;
     color: white;
     background-color: black;
