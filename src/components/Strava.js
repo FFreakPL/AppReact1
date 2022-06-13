@@ -23,9 +23,7 @@ function Strava() {
     const refreshToken = "49ea1a2d7fe18daf857b7f43c82cf13e539d31b1";
     const callRefresh = `https://www.strava.com/oauth/token?client_id=${clientID}&client_secret=${clientSecret}&refresh_token=${refreshToken}&grant_type=refresh_token`
 
-    // access token and https
-    // const accessToken = "069c016f83dc5fbe270eabad7d47e18056115501"
-    const callActivities = `https://www.strava.com/api/v3/athlete/activities?access_token=069c016f83dc5fbe270eabad7d47e18056115501`
+    // const callActivities = `https://www.strava.com/api/v3/athlete/activities?access_token=069c016f83dc5fbe270eabad7d47e18056115501`
     const currentStarredSegments = `https://www.strava.com/api/v3/segments/`
     const callStarredSegments = `https://www.strava.com/api/v3/segments/starred?page=1&per_page=200&access_token=`
 
@@ -34,32 +32,27 @@ function Strava() {
             method: 'POST'
         })
             .then(res => res.json())
-            .then(result => getSegments(result.access_token))
-            // .then(result => getCurrent(result.access_token))
+            .then(result => getSegments(result.access_token) && localStorage.setItem(token, result.access_token))
+            // .then(result => localStorage.setItem(token, result.access_token))
             // .then(result => setToken(prevToken => result.access_token))
 
     }, [callRefresh])
 
     useEffect(() => {
+        fetch(callRefresh, {
+            method: 'POST'
+        })
+            .then(res => res.json())
+            .then(result => localStorage.setItem(token, result.access_token))
+    }, [callRefresh])
+
+//sprobowac uzyc localstorage
+    useEffect(() => {
         if (!currentSegment) return;
-        fetch(`${currentStarredSegments}${currentSegment}?access_token=e4f5b7f7c2a98efcaf6675d12394fdcf848bccb6`)
+        fetch(`${currentStarredSegments}${currentSegment}?access_token=${localStorage.getItem(token)}`)
             .then(r => r.json())
             .then(data => setCurrent(data))
     }, [currentSegment])
-
-    // function getCurrent(accessToken){
-    //     fetch(currentStarredSegments + currentSegment + accessToken)
-    //         .then(res => res.json())
-    //         .then(data => setCurrent(data) & setIsLoading(prev => !prev))
-    //         .catch(e => console.log(e))
-    // }
-
-    //     function getSegmentsId(accessToken) {
-    //     fetch(currentActivities + currentSegment + accessToken)
-    //         .then(res => res.json())
-    //         .then(data => setCurrent(data) & setIsLoading(prev => !prev))
-    //         .catch(e => console.log(e))
-    // }
 
     // use current access token to call all segments
     function getSegments(accessToken){
@@ -70,41 +63,12 @@ function Strava() {
             .catch(e => console.log(e))
     }
 
-    // function showActivities(){
-    //     if(isLoading) return <>LOADING</>
-    //     if(!isLoading) {
-    //         // console.log(activities)
-    //         return activities.length
-    //     }
-    // }
-
-    // const SegmentsList = ({segments}) => {
-    //     return (
-    //         <select className="segments_list">
-    //             {segments.map((el)=>
-    //                 <option key={el.id} className="segments_item">{el.name}</option>
-    //             )}
-    //         </select>
-    //     )
-    // }
-
     function showSegments() {
         if(!segments.length) return <>LOADING</>
         if(segments.length) {
         // console.log(segments)
         return segments.length
         }
-
-        // return (
-        //     <>
-        //         <h1>Liczba śledzonych segmentów to: <strong>{segments.length}</strong></h1>
-        //         <h2>Lista segmentów:</h2>
-        //         {/*<SegmentsList segments={segments}/>*/}
-        //         <select className="segments_list">
-        //         {!isLoading ? `LOADING` : segments.map(segment => <option key={segment.id} className="segments_item">{segment.name}</option>)}
-        //         </select>
-        //     </>
-        // )
     }
 
     function handleChange({ target: { value }}) {
@@ -112,31 +76,22 @@ function Strava() {
     }
     if(current){
         console.log(current)}
-        // console.log(current.map.polyline)}
-    // console.log(current.map.polyline)
-    // console.log(segments)
+
+    // const segmentsSorted = segments.sort((a,b) => a.name - b.name);
+
+    const segmentsSorted = segments.sort(function(a, b) {
+        return a.name.localeCompare(b.name)
+    });
+
     return (
-        // <div>
-        //     <h1>Liczba śledzonych segmentów to: <strong>{segments.length}</strong></h1>
-        //     <h2>Lista segmentów:</h2>
-        //     {/*<SegmentsList segments={segments}/>*/}
-        //     <select className="segments_list">
-        //         {segments.map((segment) => <option key={segment.id} className="segments_item">{segment.name}</option>)}
-        //     </select>
-        // </div>
         <>
-            {(current) &&
-                // <SegmentContext.Provider value={current}>
-                    <Map props={current}/>
-                // </SegmentContext.Provider>
-            }
+            {(current) && <Map props={current}/>}
             {(current) && <Weather props={current}/>}
         <div className="Segments">
             <h1>Liczba śledzonych segmentów to: <strong>{showSegments()}</strong></h1>
             <h2>Lista segmentów:</h2>
-            {/*<SegmentsList segments={segments}/>*/}
             <select className="segments_list" onChange={handleChange}>
-                {!segments.length ? `LOADING` : segments.map(segment => <option key={segment.id} value={segment.id} className="segments_item">{segment.name}</option>)}
+                {!segments.length ? `LOADING` : segmentsSorted.map(segment => <option key={segment.id} value={segment.id} className="segments_item">{segment.name}</option>)}
             </select>
         </div>
         </>

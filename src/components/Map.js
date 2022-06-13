@@ -1,7 +1,7 @@
 import React, { Component,  useState, useCallback } from "react";
 import "./Map.css";
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
-import { Polyline, InfoWindow } from '@react-google-maps/api';
+import { Polyline, InfoWindow, InfoBox } from '@react-google-maps/api';
 import { BicyclingLayer } from '@react-google-maps/api';
 import { decode, encode } from "@googlemaps/polyline-codec";
 // import Strava from "./Strava";
@@ -28,6 +28,7 @@ function Map({props}) {
     // const onLoad = bicyclingLayer => {
     //     console.log('bicyclingLayer: ', bicyclingLayer)
     // }
+    const options = { closeBoxURL: '', enableEventPropagation: true };
 
 
     const onUnmount = useCallback(function callback(map) {
@@ -67,7 +68,7 @@ function Map({props}) {
         <GoogleMap
             id="map"
             center={center}
-            zoom={10}
+            zoom={7}
             onLoad={onLoad}
             onUnmount={onUnmount}
         >

@@ -30,7 +30,7 @@ function Dashboard() {
     }, [user, loading]);
 
     return (
-        <div>
+        <div className="app_container">
             <Strava/>
             <div className="dashboard">
                 <div className="dashboard__container">

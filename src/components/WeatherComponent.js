@@ -3,14 +3,11 @@ import "./WeatherComponent.css";
 
 function WeatherComponent({weatherData, props,}) {
     const [date, setDate] = useState(new Date());
-    // console.log(weatherData.cnt);
     useEffect(() => {
         setDate(date => new Date())
     },[])
-    console.log(date)
-    const dates = [];
+
     const month = ["Styczeń","Luty","Marzec","Kwiecień","Maj","Czerwiec","Lipiec","Sierpień","Wrzesień","Październik","Listopad","Grudzień"];
-    // console.log(weatherData.list[0].dt_txt);
     const today = new Date();
 
     const tomorrow = new Date();
@@ -23,7 +20,10 @@ function WeatherComponent({weatherData, props,}) {
     thirdDay.setDate(today.getDate() + 3)
 
     const fourthDay = new Date();
-    fourthDay.setDate(today.getDate() + 3)
+    fourthDay.setDate(today.getDate() + 4)
+
+    const fifthDay = new Date();
+    fourthDay.setDate(today.getDate() + 5)
 
 
     const imgDayOne = require(`.././assets/icons/${weatherData.daily[1].weather[0].icon}.png`)
@@ -34,6 +34,8 @@ function WeatherComponent({weatherData, props,}) {
     const imgDayThreeAlt = weatherData.daily[3].weather[0].main;
     const imgDayFour = require(`.././assets/icons/${weatherData.daily[4].weather[0].icon}.png`)
     const imgDayFourAlt = weatherData.daily[4].weather[0].main;
+    const imgDayFive = require(`.././assets/icons/${weatherData.daily[5].weather[0].icon}.png`)
+    const imgDayFiveAlt = weatherData.daily[5].weather[0].main;
 
     return(
         <>
@@ -61,11 +63,11 @@ function WeatherComponent({weatherData, props,}) {
                             <img src={imgDayFour} alt={imgDayFourAlt} className="weather_icon"/>
                             <p><strong>{(weatherData.daily[4].temp.day).toFixed(0)}°C</strong></p>
                         </div>
-                        {/*<div className="weather_item">*/}
-                        {/*    <p>{weatherData.list[33].dt_txt}</p>*/}
-                        {/*    <img src={imgDayFive} alt={imgDayFiveAlt} width={100} height={100}/>*/}
-                        {/*    <p><strong>{(weatherData.list[35].main.temp).toFixed(0)}°C</strong></p>*/}
-                        {/*</div>*/}
+                        <div className="weather_item">
+                            <p>{fifthDay.getDate()} {month[fifthDay.getMonth()]}</p>
+                            <img src={imgDayFive} alt={imgDayFiveAlt} className="weather_icon"/>
+                            <p><strong>{(weatherData.daily[5].temp.day).toFixed(0)}°C</strong></p>
+                        </div>
                     </div>
 
                 </div>
