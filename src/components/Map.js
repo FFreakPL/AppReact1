@@ -4,6 +4,7 @@ import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
 import { Polyline, InfoWindow, InfoBox } from '@react-google-maps/api';
 import { BicyclingLayer } from '@react-google-maps/api';
 import { decode, encode } from "@googlemaps/polyline-codec";
+import {preventDefault} from "ol/events/Event";
 // import Strava from "./Strava";
 
 function Map({props}) {
@@ -19,11 +20,14 @@ function Map({props}) {
     }
 
     const [map, setMap] = useState(null)
+    const [isShown, setIsShown] = useState(false)
+    // const [zoom, setZoom] = useState();
 
     const onLoad = useCallback(function callback(map) {
         const bounds = new window.google.maps.LatLngBounds(center);
         map.fitBounds(bounds);
-        setMap(map)
+        setMap(map);
+        // setZoom(5)
     }, []);
     // const onLoad = bicyclingLayer => {
     //     console.log('bicyclingLayer: ', bicyclingLayer)
@@ -35,18 +39,8 @@ function Map({props}) {
         setMap(null)
     }, [])
 
-    const onInfo = infoWindow => {
-        return (
-            <InfoWindow
-                position={segmentRoute[0]}
-            >
-                <div style={divStyle}>
-                    <p>{props.name}</p>
-                    <p>Distance: {props.distance}m</p>
-                    <p>Elevation gain: {props.total_elevation_gain}</p>
-                </div>
-            </InfoWindow>
-        )
+    const onInfo = event => {
+        setIsShown(current => !current)
     }
 
     const encoded = props.map.polyline;
@@ -80,7 +74,7 @@ function Map({props}) {
         <GoogleMap
             id="map"
             center={center}
-            zoom={7}
+            zoom={3}
             onLoad={onLoad}
             onUnmount={onUnmount}
         >
@@ -91,6 +85,16 @@ function Map({props}) {
                 options={polylineStyle}
                 onClick={onInfo}
             />
+            {isShown &&
+                <InfoWindow
+                    position={segmentRoute[0]}
+                >
+                    <div style={divStyle}>
+                        <p>{props.name}</p>
+                        <p>Distance: {props.distance}m</p>
+                        <p>Elevation gain: {props.total_elevation_gain}</p>
+                    </div>
+                </InfoWindow>}
             <InfoWindow
                 position={segmentRoute[0]}
                 >

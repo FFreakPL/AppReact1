@@ -64,8 +64,6 @@ function Strava() {
             .catch(e => console.log(e))
     }
 
-
-
     function handleChange({ target: { value }}) {
         setCurrentSegment(value)
     }

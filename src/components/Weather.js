@@ -12,6 +12,8 @@ function Weather({props}) {
     // const [long, setLong] = useState([]);
     const [data, setData] = useState([]);
     const [isShown, setIsShown] = useState(false);
+    const [showForecast, setShowForecast] = useState("Pokaż pogodę");
+    const [hideForecast, setHideForecast] = useState("Ukryj Pogodę");
     const lat = props.start_latlng[0];
     const long = props.start_latlng[1]
 
@@ -35,13 +37,15 @@ function Weather({props}) {
     }, [lat,long])
 
     const showWeather = event => {
-        setIsShown(current => !current)
+        setIsShown(current => !current);
+        // setShowForecast(prevState => "Pokaż pogodę");
+        // setHideForecast(prevState => "Ukryj Pogodę");
     }
 
     return (
         <div className="weather_forecast">
             {(data.length !== 0) ?
-                <button type="button" className="button_weather"onClick={showWeather}>Pokaż pogodę</button>
+                <button type="button" className="button_weather"onClick={showWeather}>{!isShown ? showForecast : hideForecast}</button>
                 :
                 <div></div>
             }
