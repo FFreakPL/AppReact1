@@ -36,8 +36,19 @@ function Map({props}) {
     }, [])
 
     const onInfo = infoWindow => {
-
+        return (
+            <InfoWindow
+                position={segmentRoute[0]}
+            >
+                <div style={divStyle}>
+                    <p>{props.name}</p>
+                    <p>Distance: {props.distance}m</p>
+                    <p>Elevation gain: {props.total_elevation_gain}</p>
+                </div>
+            </InfoWindow>
+        )
     }
+
     const encoded = props.map.polyline;
     const decoded = decode(encoded, 5);
 
