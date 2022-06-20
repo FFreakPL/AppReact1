@@ -11,6 +11,7 @@ function Weather({props}) {
     // const [lat, setLat] = useState([]);
     // const [long, setLong] = useState([]);
     const [data, setData] = useState([]);
+    const [isShown, setIsShown] = useState(false);
     const lat = props.start_latlng[0];
     const long = props.start_latlng[1]
 
@@ -33,15 +34,26 @@ function Weather({props}) {
                 .then(result => setData(result))
     }, [lat,long])
 
+    const showWeather = event => {
+        setIsShown(current => !current)
+    }
 
     return (
-        <>
+        <div className="weather_forecast">
             {(data.length !== 0) ?
-                <WeatherComponent weatherData={data} props={props}/>
-            :
+                <button type="button" className="button_weather"onClick={showWeather}>Pokaż pogodę</button>
+                :
                 <div></div>
             }
-        </>
+            {isShown && (
+                <WeatherComponent weatherData={data} props={props}/>
+            )}
+            {/*{(data.length !== 0) ?*/}
+            {/*    <WeatherComponent weatherData={data} props={props}/>*/}
+            {/*:*/}
+            {/*    <div></div>*/}
+            {/*}*/}
+        </div>
     );
 }
 

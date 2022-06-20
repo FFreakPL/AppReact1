@@ -97,7 +97,6 @@ function Strava() {
     return (
         <>
             {(current) && <Map props={current} segments={segmentsRiding}/>}
-            {(current) && <Weather props={current}/>}
         <div className="Segments">
             <h1 style={{display: display}}>Liczba śledzonych segmentów to: <strong>{showSegments()}</strong></h1>
             <h2>Wybierz segment:</h2>
@@ -105,6 +104,7 @@ function Strava() {
                 {!segments.length ? `LOADING` : segmentsRiding.map(segment => <option key={segment.id} value={segment.id} className="segments_item">{segment.name}</option>)}
             </select>
         </div>
+            {(current) && <Weather props={current}/>}
         </>
     );
 }

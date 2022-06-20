@@ -1,7 +1,12 @@
+.weather {
+    display: flex;
+    flex-direction: column;
+}
+
 .weather_container {
     width: 80vw;
     background-color: white;
-    border: 2rem solid white;
+    border: 0rem solid white;
     border-radius: 2rem;
     margin: 0 auto;
     margin-top: 1rem;
@@ -12,4 +17,12 @@
     align-items: center;
     justify-content: space-around;
     font-size: 2rem;
+}
+
+.button_weather {
+    padding: 0.5rem;
+    border: 2px solid white;
+    border-radius: 0.5rem;
+    background-color: white;
+    margin-top: 0.5rem;
 }
