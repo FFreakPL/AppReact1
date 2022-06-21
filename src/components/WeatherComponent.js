@@ -5,6 +5,7 @@ function WeatherComponent({weatherData, props,}) {
     const [date, setDate] = useState(new Date());
     const [display, setDisplay] = useState("flex")
     // const [fadding, setFadding] = useState("fadeIn 1s ease forwards");
+    const [zIndex, setZIndex] = useState(1)
     useEffect(() => {
         setDate(date => new Date())
     },[])
@@ -45,18 +46,21 @@ function WeatherComponent({weatherData, props,}) {
 
     // useEffect(() => {
     //     const displayNone = () => {
-    //         setDisplay(prevState => "none")
+    //         setFadding(prevState => "fadeOut 1s ease backwards")
+    //         // setZIndex(prevState => !prevState);
+    //         // setDisplay(prevState => "none")
     //     };
     // },[])
-
-    const displayNone = (display) => {
-        // setFadding(prevState => "fadeOut 1s ease backwards")
-        setDisplay(prevState => "none");
-    }
+    //
+    // const displayNone = () => {
+    //     setFadding(prevState => "fadeOut 1s ease backwards")
+    //     // setZIndex(prevState => 1);
+    //     // setDisplay(prevState => "none");
+    // }
 
     return(
                     // <p>{props.name}</p>
-                    <div className="weather_container" style={{display: display}}>
+                    <div className="weather_container">
                         {/*<i className="fa-solid fa-xmark" onClick={displayNone}></i>*/}
                         <div className="weather_item">
                             <p>{tomorrow.getDate()}{month[tomorrow.getMonth()]}</p>
