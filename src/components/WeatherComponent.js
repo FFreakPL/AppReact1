@@ -3,7 +3,7 @@ import "./WeatherComponent.css";
 
 function WeatherComponent({weatherData, props,}) {
     const [date, setDate] = useState(new Date());
-    const [display, setDisplay] = useState("flex")
+    // const [display, setDisplay] = useState("flex")
     // const [fadding, setFadding] = useState("fadeIn 1s ease forwards");
     const [zIndex, setZIndex] = useState(1)
     useEffect(() => {
@@ -29,9 +29,6 @@ function WeatherComponent({weatherData, props,}) {
     // const fifthDay = new Date();
     // fourthDay.setDate(today.getDate() + 5)
 
-    // const handleClick = event => {
-    //     setClassName("hidden");
-    // }
 
     const imgDayOne = require(`.././assets/icons/${weatherData.daily[1].weather[0].icon}.png`)
     const imgDayOneAlt = weatherData.daily[1].weather[0].main;

@@ -4,9 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "./Dashboard.css";
 import { auth, db, logout } from "./firebase";
 import { query, collection, getDocs, where } from "firebase/firestore";
-import Map from "./Map";
 import Strava from "./Strava";
-import Weather from "./Weather";
 
 function Dashboard() {
     const [user, loading, error] = useAuthState(auth);
