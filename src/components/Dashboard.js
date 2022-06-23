@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
-import "./Dashboard.css";
+import "./out.css";
 import { auth, db, logout } from "./firebase";
 import { query, collection, getDocs, where } from "firebase/firestore";
 import Strava from "./Strava";
+import Header from "./Header";
 
 function Dashboard() {
+    //dashboard
     const [user, loading, error] = useAuthState(auth);
     const [name, setName] = useState("");
     const [display, setDisplay] = useState("")
     const [backgroundColor, setBackgroundColor] = useState("")
     const [border, setBorder] = useState("")
     const navigate = useNavigate();
+
     const fetchUserName = async () => {
         try {
             const q = query(collection(db, "users"), where("uid", "==", user?.uid));
@@ -49,19 +52,22 @@ function Dashboard() {
     });
 
     return (
+        <>
+        <Header/>
         <div className="app_container">
             <Strava/>
             <div className="dashboard">
-                <div className="dashboard__container" style={{backgroundColor: backgroundColor, border: border}}>
+                <div className="dashboard_container" style={{backgroundColor: backgroundColor, border: border}}>
                     <span  style={{display: display}}>Zalogowano jako</span>
                  <div  style={{display: display}}>{name}</div>
                  <div  style={{display: display}}>{user?.email}</div>
-                    <button className="dashboard__btn" onClick={logout}>
-                        Wyloguj
-                    </button>
+                    {/*<button className="dashboard_btn" onClick={logout}>*/}
+                    {/*    Wyloguj*/}
+                    {/*</button>*/}
              </div>
             </div>
         </div>
+        </>
     );
 }
 export default Dashboard;

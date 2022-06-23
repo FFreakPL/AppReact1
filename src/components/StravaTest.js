@@ -3,7 +3,7 @@ import "./out.css";
 import Map from "./Map";
 import Weather from "./Weather";
 
-function Strava() {
+function Strava2() {
     const [isLoading, setIsLoading] = useState(true)
     // const [activities, setActivities] = useState({})
     const [segments, setSegments] = useState([])
@@ -30,8 +30,8 @@ function Strava() {
         })
             .then(res => res.json())
             .then(result => getSegments(result.access_token) && localStorage.setItem(token, result.access_token))
-            // .then(result => localStorage.setItem(token, result.access_token))
-            // .then(result => setToken(prevToken => result.access_token))
+        // .then(result => localStorage.setItem(token, result.access_token))
+        // .then(result => setToken(prevToken => result.access_token))
 
     }, [callRefresh])
 
@@ -91,16 +91,16 @@ function Strava() {
     return (
         <>
             {(current) && <Map props={current} segments={segmentsRiding}/>}
-        <div className="segments">
-            <h1 style={{display: display}}>Liczba śledzonych segmentów to: <strong>{showSegments()}</strong></h1>
-            <h2>Wybierz segment:</h2>
-            <select className="segments_list" onChange={handleChange}>
-                {!segments.length ? `LOADING` : segmentsRiding.map(segment => <option key={segment.id} value={segment.id} className="segments_item">{segment.name}</option>)}
-            </select>
-        </div>
+            <div className="segments">
+                <h1 style={{display: display}}>Liczba śledzonych segmentów to: <strong>{showSegments()}</strong></h1>
+                <h2>Wybierz segment:</h2>
+                <select className="segments_list" onChange={handleChange}>
+                    {!segments.length ? `LOADING` : segmentsRiding.map(segment => <option key={segment.id} value={segment.id} className="segments_item">{segment.name}</option>)}
+                </select>
+            </div>
             {(current) && <Weather props={current}/>}
         </>
     );
 }
 
-export default Strava;
+export default Strava2;

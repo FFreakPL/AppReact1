@@ -69,6 +69,7 @@ const signInWithFacebook = async () => {
         alert(err.message);
     }
 };
+
 const logInWithEmailAndPassword = async (email, password) => {
     try {
         await signInWithEmailAndPassword(auth, email, password);

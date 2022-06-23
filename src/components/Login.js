@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { auth, logInWithEmailAndPassword, signInWithGoogle, signInWithFacebook } from "./firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
-import "./Login.css";
+import "./out.css";
 function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -17,28 +17,28 @@ function Login() {
     }, [user, loading]);
     return (
         <div className="login">
-            <div className="login__container">
+            <div className="login_container">
                 <input
                     type="text"
-                    className="login__textBox"
+                    className="login_textBox"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Adres E-mail"
                 />
                 <input
                     type="password"
-                    className="login__textBox"
+                    className="login_textBox"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="Hasło"
                 />
                 <button
-                    className="login__btn"
+                    className="login_btn"
                     onClick={() => logInWithEmailAndPassword(email, password)}
                 >
                     Zaloguj się
                 </button>
-                <button className="login__btn login__google" onClick={signInWithGoogle}>
+                <button className="login_btn login_google" onClick={signInWithGoogle}>
                     <span className="button-icon">Zaloguj się z   <i className="fa-brands fa-google"></i></span>
                 </button>
                 <button className="login__btn login__facebook" onClick={signInWithFacebook}>

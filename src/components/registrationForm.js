@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import './Login.css'
+import "./out.css";
 import {database} from './firebase'
 import {ref,push,child,update} from "firebase/database";
 

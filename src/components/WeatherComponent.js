@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react';
-import "./WeatherComponent.css";
+import "./out.css";
 
 function WeatherComponent({weatherData, props,}) {
     const [date, setDate] = useState(new Date());
@@ -56,7 +56,6 @@ function WeatherComponent({weatherData, props,}) {
     // }
 
     return(
-                    // <p>{props.name}</p>
                     <div className="weather_container">
                         {/*<i className="fa-solid fa-xmark" onClick={displayNone}></i>*/}
                         <div className="weather_item">

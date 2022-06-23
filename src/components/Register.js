@@ -7,7 +7,7 @@ import {
     signInWithGoogle,
     signInWithFacebook,
 } from "./firebase";
-import "./Register.css";
+import "./out.css";
 function Register() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -24,33 +24,33 @@ function Register() {
     }, [user, loading]);
     return (
         <div className="register">
-            <div className="register__container">
+            <div className="register_container">
                 <input
                     type="text"
-                    className="register__textBox"
+                    className="register_textBox"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Nick"
                 />
                 <input
                     type="text"
-                    className="register__textBox"
+                    className="register_textBox"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Adres E-mail"
                 />
                 <input
                     type="password"
-                    className="register__textBox"
+                    className="register_textBox"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="Hasło"
                 />
-                <button className="register__btn" onClick={register}>
+                <button className="register_btn" onClick={register}>
                     Zarejestruj się
                 </button>
                 <button
-                    className="register__btn register__google"
+                    className="register_btn register_google"
                     onClick={signInWithGoogle}
                 >
                     <span className="button-icon">Zarejestruj się z   <i className="fa-brands fa-google"></i></span>
