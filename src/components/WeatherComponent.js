@@ -43,23 +43,23 @@ function WeatherComponent({weatherData, props, showWeather}) {
     const imgDaySix = require(`.././assets/icons/${weatherData.daily[6].weather[0].icon}.png`)
     const imgDaySixAlt = weatherData.daily[6].weather[0].main;
 
-    useEffect(() => {
-        const displayNone = () => {
-            // setFadding(prevState => "fadeOut 1s ease backwards")
-            // setZIndex(prevState => !prevState);
-            setDisplay(prevState => "none")
-        };
-    },[])
+    // useEffect(() => {
+    //     const displayNone = () => {
+    //         // setFadding(prevState => "fadeOut 1s ease backwards")
+    //         // setZIndex(prevState => !prevState);
+    //         setDisplay(prevState => "none")
+    //     };
+    // },[])
     //
-    const displayNone = (display) => {
-        // setFadding(prevState => "fadeOut 1s ease backwards")
-        // setZIndex(prevState => 1);
-        setDisplay(prevState => "none");
-    }
+    // const displayNone = (display) => {
+    //     // setFadding(prevState => "fadeOut 1s ease backwards")
+    //     // setZIndex(prevState => 1);
+    //     setDisplay(prevState => "none");
+    // }
 
     return(
 
-        <div className="weather_container" style={{display: display}}>
+        <div className="weather_container">
             <i className="fa-solid fa-xmark" onClick={showWeather}></i>
                         <div className="weather_item" onClick={console.log("dupa")}>
                             <p>{tomorrow.getDate()}{month[tomorrow.getMonth()]}</p>
