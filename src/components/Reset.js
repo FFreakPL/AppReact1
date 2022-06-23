@@ -14,6 +14,7 @@ function Reset() {
     }, [user, loading]);
     return (
         <div className="reset">
+            <div className="login_logo"></div>
             <div className="reset_container">
                 <input
                     type="text"
