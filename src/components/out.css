@@ -474,6 +474,9 @@ code {
     @media (max-width: 792px) {
       .header__logo {
         width: 50vw; } }
+    @media (max-width: 1024px) {
+      .header__logo {
+        width: 50vw; } }
   .header .nav__element {
     padding: 0 26px; }
     .header .nav__element:last-child {
@@ -483,10 +486,15 @@ code {
     font-weight: 700;
     font-size: 1rem;
     text-transform: uppercase;
-    padding: 28px 18px 25px;
+    padding-bottom: 25px;
     border-bottom: 3px solid transparent;
-    letter-spacing: 0.1875rem; }
+    letter-spacing: 0.1875rem;
+    justify-content: center;
+    align-items: center; }
     @media (max-width: 792px) {
+      .header .nav__link {
+        font-size: 1rem; } }
+    @media (max-width: 1024px) {
       .header .nav__link {
         font-size: 1rem; } }
     .header .nav__link:hover {
@@ -495,6 +503,24 @@ code {
   .header__nav {
     display: flex; }
     @media (max-width: 792px) {
+      .header__nav {
+        position: absolute;
+        left: 0;
+        top: 6vh;
+        flex-direction: column;
+        background-color: #aae9e1;
+        width: 100%;
+        display: none;
+        height: 60vh;
+        border-radius: 1rem;
+        z-index: 5;
+        justify-content: space-around;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16); }
+        .header__nav .nav__element {
+          padding: 1rem; }
+          .header__nav .nav__element:last-child {
+            padding: 1rem; } }
+    @media (max-width: 1024px) {
       .header__nav {
         position: absolute;
         left: 0;
@@ -530,6 +556,15 @@ code {
         opacity: 0; }
       .header .menu__btn:checked ~ .menu__toggle span:nth-child(3) {
         transform: rotate(-45deg) translate(2px, -5px); } }
+    @media (max-width: 1024px) {
+      .header .menu__btn:checked ~ .header__nav {
+        display: flex; }
+      .header .menu__btn:checked ~ .menu__toggle span:nth-child(1) {
+        transform: rotate(45deg) translate(2px, 5px); }
+      .header .menu__btn:checked ~ .menu__toggle span:nth-child(2) {
+        opacity: 0; }
+      .header .menu__btn:checked ~ .menu__toggle span:nth-child(3) {
+        transform: rotate(-45deg) translate(2px, -5px); } }
   .header .menu__toggle {
     display: none; }
     .header .menu__toggle span {
@@ -542,6 +577,10 @@ code {
       .header .menu__toggle span:last-child {
         margin-bottom: 0; }
     @media (max-width: 792px) {
+      .header .menu__toggle {
+        display: block;
+        margin-right: 1rem; } }
+    @media (max-width: 1024px) {
       .header .menu__toggle {
         display: block;
         margin-right: 1rem; } }
@@ -623,6 +662,12 @@ code {
   height: 60vh;
   border-radius: 1rem;
   opacity: 0.9; }
+  @media (max-width: 792px) {
+    #map {
+      height: 94vh; } }
+  @media (max-width: 1024px) {
+    #map {
+      height: 94vh; } }
 
 .hidden {
   display: none; }
@@ -719,9 +764,19 @@ code {
   border: 1rem solid white;
   border-radius: 12px;
   font-size: 1rem; }
-  @media (max-width: 792px) {
-    .segments_list {
-      width: 100vw; } }
+  .segments_list_nav {
+    background-color: transparent;
+    border-radius: 1rem;
+    font-weight: 700;
+    font-size: 1rem;
+    text-transform: uppercase;
+    width: 20vw; }
+    @media (max-width: 792px) {
+      .segments_list_nav {
+        width: 90vw; } }
+    @media (max-width: 1024px) {
+      .segments_list_nav {
+        width: 90vw; } }
 .segments h1, .segments h2 {
   font-size: 1.5rem;
   padding: 1rem; }
@@ -730,16 +785,27 @@ code {
       padding: 0.5rem; } }
 
 .weather_button {
-  padding: 1rem;
-  border: 4px solid white;
-  border-radius: 1rem;
   background-color: white;
-  margin-top: 2rem;
-  font-size: 1rem;
-  opacity: 0.9; }
+  box-shadow: 0px 1px 4px -1px rgba(0, 0, 0, 0.3);
+  border: 0px;
+  padding: 0 1rem;
+  cursor: pointer;
+  height: 2.5rem;
+  color: black;
+  font-family: Roboto, Arial, sans-serif;
+  font-size: 1.15rem;
+  position: absolute;
+  left: 0;
+  top: 14vh;
+  margin-left: 0.6rem; }
   @media (max-width: 792px) {
     .weather_button {
-      padding: 0.5rem; } }
+      padding: 0.5rem;
+      top: 19vh; } }
+  @media (max-width: 1024px) {
+    .weather_button {
+      padding: 0.5rem;
+      top: 15vh; } }
 .weather_button:hover {
   animation: background 1s ease forwards; }
 .weather_icon {
@@ -769,9 +835,9 @@ code {
   @media (max-width: 792px) {
     .weather_container {
       width: 100vw;
-      height: 60vh;
+      height: 94vh;
       max-width: 100vw;
-      max-height: 60vh;
+      max-height: 94vh;
       border-radius: 1rem;
       display: flex;
       flex-direction: row;
@@ -802,8 +868,11 @@ code {
 
 .fa-xmark {
   position: absolute;
-  right: 1.25vw;
-  top: 0.5vh; }
+  right: 2vw;
+  top: 1.5vh;
+  font-size: 2rem; }
+  .fa-xmark:hover {
+    cursor: pointer; }
 
 .contact {
   display: flex;

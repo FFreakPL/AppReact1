@@ -1,9 +1,9 @@
 import React, { useState, useEffect} from 'react';
 import "./out.css";
 
-function WeatherComponent({weatherData, props,}) {
+function WeatherComponent({weatherData, props, showWeather}) {
     const [date, setDate] = useState(new Date());
-    // const [display, setDisplay] = useState("flex")
+    const [display, setDisplay] = useState("flex")
     // const [fadding, setFadding] = useState("fadeIn 1s ease forwards");
     const [zIndex, setZIndex] = useState(1)
     useEffect(() => {
@@ -43,24 +43,25 @@ function WeatherComponent({weatherData, props,}) {
     const imgDaySix = require(`.././assets/icons/${weatherData.daily[6].weather[0].icon}.png`)
     const imgDaySixAlt = weatherData.daily[6].weather[0].main;
 
-    // useEffect(() => {
-    //     const displayNone = () => {
-    //         setFadding(prevState => "fadeOut 1s ease backwards")
-    //         // setZIndex(prevState => !prevState);
-    //         // setDisplay(prevState => "none")
-    //     };
-    // },[])
+    useEffect(() => {
+        const displayNone = () => {
+            // setFadding(prevState => "fadeOut 1s ease backwards")
+            // setZIndex(prevState => !prevState);
+            setDisplay(prevState => "none")
+        };
+    },[])
     //
-    // const displayNone = () => {
-    //     setFadding(prevState => "fadeOut 1s ease backwards")
-    //     // setZIndex(prevState => 1);
-    //     // setDisplay(prevState => "none");
-    // }
+    const displayNone = (display) => {
+        // setFadding(prevState => "fadeOut 1s ease backwards")
+        // setZIndex(prevState => 1);
+        setDisplay(prevState => "none");
+    }
 
     return(
-                    <div className="weather_container">
-                        {/*<i className="fa-solid fa-xmark" onClick={displayNone}></i>*/}
-                        <div className="weather_item">
+
+        <div className="weather_container" style={{display: display}}>
+            <i className="fa-solid fa-xmark" onClick={showWeather}></i>
+                        <div className="weather_item" onClick={console.log("dupa")}>
                             <p>{tomorrow.getDate()}{month[tomorrow.getMonth()]}</p>
                             <img src={imgDayOne} alt={imgDayOneAlt} className="weather_icon"/>
                             <p><strong>{(weatherData.daily[1].temp.day).toFixed(0)}°C</strong></p>

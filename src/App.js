@@ -6,17 +6,19 @@ import Reset from "./components/Reset";
 import Dashboard from "./components/Dashboard";
 import Oauth from "./components/Oauth";
 import Contact from "./components/Contact";
+import Strava from "./components/Strava";
 
 function App() {
     return (
         <div className="app">
             <Router>
                 <Routes>
-                    <Route path="/" element={<Login />} />
-                    <Route path="/register" element={<Register />} />
-                    <Route path="/reset" element={<Reset />} />
+                    <Route exact path="/" element={<Login />} />
+                    <Route exact path="/register" element={<Register />} />
+                    <Route exact path="/reset" element={<Reset />} />
                     {/*<Route path="/oauth" element={<Oauth />} />*/}
                     <Route exact path="/dashboard" element={<Dashboard />} />
+                    <Route exact path="/strava" element={<Strava />}/>
                     <Route exact path="/contact" element={<Contact />}/>
                 </Routes>
             </Router>

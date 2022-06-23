@@ -53,7 +53,7 @@ function Dashboard() {
 
     return (
         <>
-        <Header/>
+        {/*<Header/>*/}
         <div className="app_container">
             <Strava/>
             <div className="dashboard">

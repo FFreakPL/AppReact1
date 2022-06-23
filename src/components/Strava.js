@@ -2,6 +2,7 @@ import React, { useState, useEffect} from 'react';
 import "./out.css";
 import Map from "./Map";
 import Weather from "./Weather";
+import HeaderStrava from "./HeaderStrava";
 
 function Strava() {
     const [isLoading, setIsLoading] = useState(true)
@@ -85,20 +86,21 @@ function Strava() {
     useEffect(() => {
         const timeout = setTimeout(() => {
             setDisplay(prevState => "none");
-        },3000)
+        },5000)
     });
 
     return (
         <>
+            <HeaderStrava segments={segments} segmentsRiding={segmentsRiding} handleChange={handleChange}/>
             {(current) && <Map props={current} segments={segmentsRiding}/>}
         <div className="segments">
             <h1 style={{display: display}}>Liczba śledzonych segmentów to: <strong>{showSegments()}</strong></h1>
-            <h2>Wybierz segment:</h2>
-            <select className="segments_list" onChange={handleChange}>
-                {!segments.length ? `LOADING` : segmentsRiding.map(segment => <option key={segment.id} value={segment.id} className="segments_item">{segment.name}</option>)}
-            </select>
+            {/*<h2>Wybierz segment:</h2>*/}
+            {/*<select className="segments_list" onChange={handleChange}>*/}
+            {/*    {!segments.length ? `LOADING` : segmentsRiding.map(segment => <option key={segment.id} value={segment.id} className="segments_item">{segment.name}</option>)}*/}
+            {/*</select>*/}
         </div>
-            {(current) && <Weather props={current}/>}
+            {(current) && <Weather props={current} segments={segments} segmentsRiding={segmentsRiding} handleChange={handleChange}/>}
         </>
     );
 }
