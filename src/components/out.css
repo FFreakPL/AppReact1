@@ -481,13 +481,16 @@ code {
   .header .nav__link {
     color: black;
     font-weight: 700;
-    font-size: 0.6875rem;
+    font-size: 1rem;
     text-transform: uppercase;
-    padding: 28px 18px 22px;
+    padding: 28px 18px 45px;
     border-bottom: 4px solid transparent;
     letter-spacing: 0.1875rem; }
+    @media (max-width: 792px) {
+      .header .nav__link {
+        font-size: 1rem; } }
     .header .nav__link:hover {
-      color: black;
+      color: white;
       border-color: white; }
   .header__nav {
     display: flex; }
@@ -495,15 +498,16 @@ code {
       .header__nav {
         position: absolute;
         left: 0;
-        top: 69px;
+        top: 10vh;
         flex-direction: column;
-        background-color: #93dad6;
+        background-color: #aae9e1;
         width: 100%;
-        padding-bottom: 20px;
         display: none;
         height: 60vh;
+        border-radius: 1rem;
         z-index: 5;
-        justify-content: space-around; }
+        justify-content: space-around;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16); }
         .header__nav .nav__element {
           padding: 1rem; }
           .header__nav .nav__element:last-child {
@@ -539,7 +543,8 @@ code {
         margin-bottom: 0; }
     @media (max-width: 792px) {
       .header .menu__toggle {
-        display: block; } }
+        display: block;
+        margin-right: 1rem; } }
 
 .dashboard {
   display: flex;
@@ -570,6 +575,7 @@ code {
   height: 100vh;
   width: 100vw;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center; }
   .login_container {
@@ -596,6 +602,13 @@ code {
     background-color: #4285f4; }
   .login_facebook {
     background-color: #3b5998; }
+  .login_logo {
+    background-image: url("../assets/images/Logo.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 40vw;
+    height: 20vh;
+    padding-bottom: 5rem; }
   .login div {
     margin-top: 7px; }
 
@@ -678,6 +691,9 @@ code {
 .segments h1, .segments h2 {
   font-size: 1.5rem;
   padding: 1rem; }
+  @media (max-width: 792px) {
+    .segments h1, .segments h2 {
+      padding: 0.5rem; } }
 
 .weather_button {
   padding: 1rem;
@@ -687,27 +703,54 @@ code {
   margin-top: 2rem;
   font-size: 1rem;
   opacity: 0.9; }
+  @media (max-width: 792px) {
+    .weather_button {
+      padding: 0.5rem; } }
 .weather_button:hover {
-  animation: background 1s ease forwards, scaleUp 1s ease-in-out infinite alternate; }
+  animation: background 1s ease forwards; }
 .weather_icon {
   min-width: 1rem;
   min-height: 1rem;
   width: 100%;
   height: 100%; }
+  @media (max-width: 792px) {
+    .weather_icon {
+      min-width: 1rem;
+      min-height: 1rem;
+      max-width: 30vw; } }
 .weather_container {
+  background-color: rgba(255, 255, 255, 0.7);
   width: 100%;
   height: 100%;
-  max-width: 90vw;
-  max-height: 35vh;
-  border-radius: 4rem;
+  max-width: 100vw;
+  max-height: 60vh;
+  border-radius: 1rem;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
   position: absolute;
-  left: 5vw;
-  top: 13%;
-  animation: fadeIn 1s ease forwards; }
+  left: 0;
+  top: 10vh;
+  animation: fadeIn 1s ease forwards;
+  box-shadow: inset 0px 0px 87px 60px #93dad6; }
+  @media (max-width: 792px) {
+    .weather_container {
+      width: 100%;
+      height: 100%;
+      max-width: 100vw;
+      max-height: 60vh;
+      border-radius: 1rem;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-evenly;
+      position: absolute;
+      top: 10%;
+      left: 0;
+      animation: fadeIn 1s ease forwards;
+      flex-wrap: wrap;
+      background-color: #a6e7e0; } }
 .weather_item {
   padding: 1rem 0rem 1rem 0rem;
   border-radius: 2rem;
@@ -717,7 +760,11 @@ code {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center; }
+  align-items: center;
+  box-shadow: 0px 0px 100px 0px #93dad6; }
+  @media (max-width: 792px) {
+    .weather_item {
+      font-size: 1rem; } }
 .weather_item > p {
   font-size: 100%; }
 

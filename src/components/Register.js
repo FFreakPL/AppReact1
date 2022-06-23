@@ -55,12 +55,12 @@ function Register() {
                 >
                     <span className="button-icon">Zarejestruj się z   <i className="fa-brands fa-google"></i></span>
                 </button>
-                <button
-                    className="register__btn register__facebook"
-                    onClick={signInWithFacebook}
-                >
-                    <span className="button-icon">Zarejestruj się z   <i className="fa-brands fa-facebook"></i></span>
-                </button>
+                {/*<button*/}
+                {/*    className="register__btn register__facebook"*/}
+                {/*    onClick={signInWithFacebook}*/}
+                {/*>*/}
+                {/*    <span className="button-icon">Zarejestruj się z   <i className="fa-brands fa-facebook"></i></span>*/}
+                {/*</button>*/}
                 <div>
                     Masz już konto? <Link to="/">Zaloguj się</Link> teraz.
                 </div>

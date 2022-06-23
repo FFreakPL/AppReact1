@@ -17,6 +17,7 @@ function Login() {
     }, [user, loading]);
     return (
         <div className="login">
+            <div className="login_logo"></div>
             <div className="login_container">
                 <input
                     type="text"
@@ -41,9 +42,9 @@ function Login() {
                 <button className="login_btn login_google" onClick={signInWithGoogle}>
                     <span className="button-icon">Zaloguj się z   <i className="fa-brands fa-google"></i></span>
                 </button>
-                <button className="login__btn login__facebook" onClick={signInWithFacebook}>
-                    <span className="button-icon">Zaloguj się z   <i className="fa-brands fa-facebook"></i></span>
-                </button>
+                {/*<button className="login__btn login__facebook" onClick={signInWithFacebook}>*/}
+                {/*    <span className="button-icon">Zaloguj się z   <i className="fa-brands fa-facebook"></i></span>*/}
+                {/*</button>*/}
                 <div>
                     <Link to="/reset">Zapomniałem hasła</Link>
                 </div>

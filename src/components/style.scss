@@ -134,14 +134,18 @@ code {
     &__link {
       color: black;
       font-weight: 700;
-      font-size: 0.6875rem;
+      font-size: 1rem;
       text-transform: uppercase;
-      padding: 28px 18px 22px;
+      padding: 28px 18px 45px;
       border-bottom: 4px solid transparent;
       letter-spacing: 0.1875rem;
 
+      @include mobile{
+        font-size: 1rem;
+      }
+
       &:hover {
-        color: black;
+        color: white;
         border-color: white;
       }
     }
@@ -153,16 +157,16 @@ code {
     @include mobile {
       position: absolute;
       left: 0;
-      top: 69px;
+      top: 10vh;
       flex-direction: column;
-      background-color: rgb(147, 218, 214);
+      background-color: #aae9e1;
       width: 100%;
-      padding-bottom: 20px;
       display: none;
       height: 60vh;
-      //opacity: 0.9;
+      border-radius: 1rem;
       z-index: 5;
       justify-content: space-around;
+      box-shadow: 0 3px 6px rgba(0 ,0 ,0,0.16);
 
       .nav__element {
         padding: 1rem;
@@ -227,6 +231,7 @@ code {
 
       @include mobile {
         display: block;
+        margin-right: 1rem;
       }
     }
   }
@@ -270,6 +275,7 @@ code {
   height: 100vh;
   width: 100vw;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 
@@ -307,6 +313,15 @@ code {
 
   &_facebook {
     background-color: #3b5998;
+  }
+
+  &_logo {
+    background-image: url("../assets/images/Logo.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 40vw;
+    height: 20vh;
+    padding-bottom:5rem;
   }
 
   div {
@@ -424,6 +439,10 @@ code {
   h1,h2 {
     font-size: 1.5rem;
     padding: 1rem;
+
+    @include mobile {
+      padding: 0.5rem;
+    }
   }
 }
 //Weather
@@ -437,10 +456,14 @@ code {
     margin-top: 2rem;
     font-size: 1rem;
     opacity: 0.9;
+
+    @include mobile {
+      padding: 0.5rem;
+    }
   }
 
   &_button:hover {
-    animation: background 1s ease forwards, scaleUp 1s ease-in-out infinite alternate;
+    animation: background 1s ease forwards;
   }
 
   &_icon {
@@ -448,22 +471,48 @@ code {
     min-height: 1rem;
     width: 100%;
     height: 100%;
+
+    @include mobile {
+      min-width: 1rem;
+      min-height: 1rem;
+      max-width: 30vw;
+    }
   }
 
   &_container {
+    background-color: rgba(255,255,255,0.7);
     width: 100%;
     height: 100%;
-    max-width: 90vw;
-    max-height: 35vh;
-    border-radius: 4rem;
+    max-width: 100vw;
+    max-height: 60vh;
+    border-radius: 1rem;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
     position: absolute;
-    left: 5vw;
-    top: 13%;
+    left: 0;
+    top: 10vh;
     animation: fadeIn 1s ease forwards;
+    box-shadow: inset 0px 0px 87px 60px rgba(147, 218, 214, 1);
+
+    @include mobile {
+      width: 100%;
+      height: 100%;
+      max-width: 100vw;
+      max-height: 60vh;
+      border-radius: 1rem;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-evenly;
+      position: absolute;
+      top: 10%;
+      left: 0;
+      animation: fadeIn 1s ease forwards;
+      flex-wrap: wrap;
+      background-color: #a6e7e0;
+    }
   }
 
   &_item {
@@ -476,6 +525,11 @@ code {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    box-shadow: 0px 0px 100px 0px rgba(147, 218, 214, 1);
+
+    @include mobile {
+      font-size: 1rem;
+    }
   }
 
   &_item > p {
