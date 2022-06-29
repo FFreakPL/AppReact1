@@ -10,10 +10,9 @@ function Login() {
     const navigate = useNavigate();
     useEffect(() => {
         if (loading) {
-            // maybe trigger a loading screen
             return;
         }
-        if (user) navigate("/dashboard");
+        if (user) navigate("/oauth");
     }, [user, loading]);
     return (
         <div className="login">
@@ -42,9 +41,6 @@ function Login() {
                 <button className="login_btn login_google" onClick={signInWithGoogle}>
                     <span className="button-icon">Zaloguj się z   <i className="fa-brands fa-google"></i></span>
                 </button>
-                {/*<button className="login__btn login__facebook" onClick={signInWithFacebook}>*/}
-                {/*    <span className="button-icon">Zaloguj się z   <i className="fa-brands fa-facebook"></i></span>*/}
-                {/*</button>*/}
                 <div>
                     <Link to="/reset">Zapomniałem hasła</Link>
                 </div>

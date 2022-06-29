@@ -1,20 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import "./out.css";
 import { auth, db, logout } from "./firebase";
 import { query, collection, getDocs, where } from "firebase/firestore";
-import Strava from "./Strava";
-import Header from "./Header";
+import StravaTest from "./StravaTest";
 
-function Dashboard() {
-    //dashboard
+function DashboardTest() {
+    const [authorCode, setAuthorCode] = useState("");
     const [user, loading, error] = useAuthState(auth);
     const [name, setName] = useState("");
     const [display, setDisplay] = useState("")
     const [backgroundColor, setBackgroundColor] = useState("")
     const [border, setBorder] = useState("")
+    const [code, setCode] = useState("")
     const navigate = useNavigate();
+
+useEffect(() => {
+    setAuthorCode(prevCode => localStorage.getItem("authCode"));
+},[authorCode])
 
     const fetchUserName = async () => {
         try {
@@ -27,6 +31,7 @@ function Dashboard() {
             alert("An error occured while fetching user data");
         }
     };
+
     useEffect(() => {
         if (loading) return;
         if (!user) return navigate("/");
@@ -53,21 +58,17 @@ function Dashboard() {
 
     return (
         <>
-        {/*<Header/>*/}
-        <div className="app_container">
-            <Strava/>
-            <div className="dashboard">
-                <div className="dashboard_container" style={{backgroundColor: backgroundColor, border: border}}>
-                    <span  style={{display: display}}>Zalogowano jako</span>
-                 <div  style={{display: display}}>{name}</div>
-                 <div  style={{display: display}}>{user?.email}</div>
-                    {/*<button className="dashboard_btn" onClick={logout}>*/}
-                    {/*    Wyloguj*/}
-                    {/*</button>*/}
-             </div>
+            <div className="app_container">
+                <StravaTest/>
+                <div className="dashboard test">
+                    <div className="dashboard_container" style={{backgroundColor: backgroundColor, border: border}}>
+                        <span  style={{display: display}}>Zalogowano jako</span>
+                        <div  style={{display: display}}>{name}</div>
+                        <div  style={{display: display}}>{user?.email}</div>
+                    </div>
+                </div>
             </div>
-        </div>
         </>
     );
 }
-export default Dashboard;
+export default DashboardTest;

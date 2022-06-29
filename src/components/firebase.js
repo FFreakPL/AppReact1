@@ -1,6 +1,5 @@
 import { initializeApp } from "firebase/app";
 import {
-    // FacebookAuthProvider,
     GoogleAuthProvider,
     getAuth,
     signInWithPopup,
@@ -50,25 +49,6 @@ const signInWithGoogle = async () => {
         alert(err.message);
     }
 };
-// const signInWithFacebook = async () => {
-//     try {
-//         const res = await signInWithPopup(auth, facebookProvider);
-//         const user = res.user;
-//         const q = query(collection(db, "users"), where("uid", "==", user.uid));
-//         const docs = await getDocs(q);
-//         if (docs.docs.length === 0) {
-//             await addDoc(collection(db, "users"), {
-//                 uid: user.uid,
-//                 name: user.displayName,
-//                 authProvider: "facebook",
-//                 email: user.email,
-//             });
-//         }
-//     } catch (err) {
-//         console.error(err);
-//         alert(err.message);
-//     }
-// };
 
 const logInWithEmailAndPassword = async (email, password) => {
     try {
@@ -94,6 +74,7 @@ const registerWithEmailAndPassword = async (name, email, password) => {
         alert(err.message);
     }
 };
+
 const sendPasswordReset = async (email) => {
     try {
         await sendPasswordResetEmail(auth, email);
@@ -110,7 +91,6 @@ export {
     auth,
     db,
     signInWithGoogle,
-    // signInWithFacebook,
     logInWithEmailAndPassword,
     registerWithEmailAndPassword,
     sendPasswordReset,

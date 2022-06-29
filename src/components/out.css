@@ -422,6 +422,11 @@ textarea {
   to {
     background-color: #92d9d4;
     border: 4px solid black; } }
+@keyframes colors2 {
+  from {
+    color: black; }
+  to {
+    color: #fc4c02; } }
 @keyframes scaleUp {
   from {
     transform: scale(1); }
@@ -500,6 +505,12 @@ code {
     .header .nav__link:hover {
       color: white;
       border-color: white; }
+      @media (max-width: 792px) {
+        .header .nav__link:hover {
+          border: none; } }
+      @media (min-width: 793px) and (max-width: 1023px) {
+        .header .nav__link:hover {
+          border: none; } }
   .header__nav {
     display: flex; }
     @media (max-width: 792px) {
@@ -558,7 +569,8 @@ code {
         transform: rotate(-45deg) translate(2px, -5px); } }
     @media (min-width: 793px) and (max-width: 1023px) {
       .header .menu__btn:checked ~ .header__nav {
-        display: flex; }
+        display: flex;
+        transition: height 0.3s ease; }
       .header .menu__btn:checked ~ .menu__toggle span:nth-child(1) {
         transform: rotate(45deg) translate(2px, 5px); }
       .header .menu__btn:checked ~ .menu__toggle span:nth-child(2) {
@@ -573,7 +585,7 @@ code {
       display: block;
       margin-bottom: 3px;
       background-color: white;
-      transition: .3s all ease-in-out; }
+      transition: 0.3s all ease-in-out; }
       .header .menu__toggle span:last-child {
         margin-bottom: 0; }
     @media (max-width: 792px) {
@@ -899,5 +911,71 @@ code {
   .contact p {
     font-size: 2rem;
     margin-top: 4rem; }
+
+.oauth {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw; }
+  .oauth_container {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; }
+  .oauth_button {
+    padding: 1rem;
+    border: 4px solid white;
+    border-radius: 1rem;
+    background-color: rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
+    opacity: 0.9; }
+    .oauth_button:hover {
+      animation: colors2 0.6s ease-in forwards; }
+
+@keyframes stravaLogo {
+  from {
+    transform: rotate(0deg); }
+  to {
+    transform: rotate(360deg); } }
+.fa-strava {
+  font-size: 4rem;
+  color: #fc5300; }
+
+#strava {
+  width: 188px;
+  height: 188px;
+  border-radius: 1rem;
+  background-color: #FC4C02;
+  position: relative; }
+
+#strava::before {
+  content: '';
+  background-image: linear-gradient(-117deg, transparent 96px, white 97px 115px, transparent 116px), linear-gradient(117deg, transparent 96px, white 97px 115px, transparent 116px);
+  background-position: 64px 0px, -36px 0px;
+  background-repeat: no-repeat;
+  width: 100px;
+  height: 86px;
+  bottom: 82px;
+  right: 66px;
+  position: absolute;
+  z-index: 1;
+  animation: stravaLogo 3s ease-in-out infinite alternate; }
+
+#strava::after {
+  content: '';
+  background-image: linear-gradient(-117deg, transparent 10px, #ffb08b 11px 24px, transparent 25px), linear-gradient(117deg, transparent 10px, #ffb08b 11px 24px, transparent 25px);
+  background-position: -28px 0px, 28px 0px;
+  background-repeat: no-repeat;
+  height: 56px;
+  width: 57px;
+  top: 107px;
+  left: 82px;
+  position: absolute;
+  z-index: 1;
+  animation: stravaLogo 3s ease-in-out infinite alternate; }
 
 /*# sourceMappingURL=out.css.map */

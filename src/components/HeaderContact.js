@@ -1,7 +1,6 @@
 import React from 'react';
-import { useState, createContext, useContext } from "react";
 import { auth, db, logout } from "./firebase";
-import WeatherComponent from "./WeatherComponent";
+
 
 function Header2() {
     return(
@@ -16,12 +15,8 @@ function Header2() {
                         <span></span>
                     </label>
                     <ul className="header__nav">
-                        <li className="nav__element"><a href="#" className="nav__link">Zaplanuj Wyjazd</a></li>
-                        <li className="nav__element"><a href="./dashboard" className="nav__link">Powrót</a></li>
+                        <li className="nav__element"><a href="./strava" className="nav__link">Powrót</a></li>
                         <li className="nav__element"><a href="#" className="nav__link" onClick={logout}>Wyloguj</a></li>
-                        {/*<button className="nav__link" onClick={logout}>*/}
-                        {/*    Wyloguj</button>*/}
-                        {/*</li>*/}
                     </ul>
                 </nav>
             </div>

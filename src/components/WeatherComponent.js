@@ -17,17 +17,20 @@ function WeatherComponent({weatherData, props, showWeather}) {
     const tomorrow = new Date();
     tomorrow.setDate(today.getDate() + 1);
     //
-    // const secondDay = new Date();
-    // secondDay.setDate(today.getDate() + 2)
-    //
-    // const thirdDay = new Date();
-    // thirdDay.setDate(today.getDate() + 3)
-    //
-    // const fourthDay = new Date();
-    // fourthDay.setDate(today.getDate() + 4)
-    //
-    // const fifthDay = new Date();
-    // fourthDay.setDate(today.getDate() + 5)
+    const secondDay = new Date();
+    secondDay.setDate(today.getDate() + 2)
+
+    const thirdDay = new Date();
+    thirdDay.setDate(today.getDate() + 3)
+
+    const fourthDay = new Date();
+    fourthDay.setDate(today.getDate() + 4)
+
+    const fifthDay = new Date();
+    fourthDay.setDate(today.getDate() + 5)
+
+    const sixthDay = new Date();
+    fifthDay.setDate(today.getDate() + 5)
 
 
     const imgDayOne = require(`.././assets/icons/${weatherData.daily[1].weather[0].icon}.png`)
@@ -61,7 +64,7 @@ function WeatherComponent({weatherData, props, showWeather}) {
 
         <div className="weather_container">
             <i className="fa-solid fa-xmark" onClick={showWeather}></i>
-                        <div className="weather_item" onClick={console.log("dupa")}>
+                        <div className="weather_item">
                             <p>{tomorrow.getDate()}{month[tomorrow.getMonth()]}</p>
                             <img src={imgDayOne} alt={imgDayOneAlt} className="weather_icon"/>
                             <p><strong>{(weatherData.daily[1].temp.day).toFixed(0)}°C</strong></p>

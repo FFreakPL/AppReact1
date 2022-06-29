@@ -18,12 +18,13 @@ function Map({props}) {
 
     const [map, setMap] = useState(null)
     const [isShown, setIsShown] = useState(false)
-    // const [zoom, setZoom] = useState();
+    const [zoom, setZoom] = useState();
 
     const onLoad = useCallback(function callback(map) {
         const bounds = new window.google.maps.LatLngBounds(center);
         map.fitBounds(bounds);
         setMap(map);
+        setZoom(zoom)
     }, []);
 
     const options = { closeBoxURL: '', enableEventPropagation: true };
@@ -66,7 +67,7 @@ function Map({props}) {
         <GoogleMap
             id="map"
             center={center}
-            zoom={3}
+            zoom={5}
             onLoad={onLoad}
             onUnmount={onUnmount}
         >

@@ -3,7 +3,7 @@ import { useState, createContext, useContext } from "react";
 import { auth, db, logout } from "./firebase";
 import WeatherComponent from "./WeatherComponent";
 
-function HeaderStrava({segments, segmentsRiding,handleChange }) {
+function HeaderStrava({segments, segmentsRiding, handleChange, accToken, refToken }) {
 
     return(
         <header className="header">
@@ -27,9 +27,9 @@ function HeaderStrava({segments, segmentsRiding,handleChange }) {
                         {/*<li className="nav__element"><select className="segments_list_nav" onChange={handleChange}>*/}
                         {/*    {!segments.length ? `LOADING` : segmentsRiding.map(segment => <option key={segment.id} value={segment.id} className="segments_item">{segment.name}</option>)}*/}
                         {/*</select></li>*/}
-                        <li className="nav__element"><a href="#" className="nav__link">Zaplanuj Wyjazd</a></li>
+                        <li className="nav__element"><a href="#" className="nav__link">Test</a></li>
                         <li className="nav__element"><a href="./contact" className="nav__link">Kontakt</a></li>
-                        <li className="nav__element"><a href="#" className="nav__link" onClick={logout}>Wyloguj</a></li>
+                        <li className="nav__element"><a href="/" className="nav__link" onClick={logout}>Wyloguj</a></li>
                     </ul>
                 </nav>
             </div>
