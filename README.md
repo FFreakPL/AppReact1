@@ -60,4 +60,4 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 ### `npm run scss`
 
-Compiles SASS file to css.\
+Compiles SASS file to css.
