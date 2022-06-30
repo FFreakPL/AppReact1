@@ -8,7 +8,7 @@ PlanYourRide is the React App that makes it easy to see the weather forecast on 
 `Authorizing App with Strava API`
 
 <img width="360" alt="Zrzut ekranu 2022-06-30 o 10 31 33" src="https://user-images.githubusercontent.com/94534923/176632438-818b0e28-dc41-44ca-b020-b05d89c2c71e.png">
-<img width="2560" alt="Zrzut ekranu 2022-06-30 o 10 42 49" src="https://user-images.githubusercontent.com/94534923/176633673-b5c82717-dc0c-48eb-9a7a-854e0f70eabc.png">
+<img width="360" alt="Zrzut ekranu 2022-06-30 o 10 42 49" src="https://user-images.githubusercontent.com/94534923/176633673-b5c82717-dc0c-48eb-9a7a-854e0f70eabc.png">
 
 `Showing polylines of selected Segment imported from Strava API`
 
