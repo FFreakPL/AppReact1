@@ -42,7 +42,7 @@ PlanYourRide is the React App that makes it easy to see the weather forecast on 
 
 ## Running APP
 
-<a href="https://playnyourride.vercel.app">
+<a href="https://playnyourride.vercel.app">PlanYourRide</a>
 
 ## Available Scripts
 
