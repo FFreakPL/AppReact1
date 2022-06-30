@@ -1,5 +1,5 @@
 # PlanYourRide
-PlanYourRide is the React App that makes it easy to see the weather forecast on starred segments in Strava.
+PlanYourRide is the React App that makes it easy to see the weather forecast on your starred segments in Strava.
 
 `Sign In/ Sign Up`
 
