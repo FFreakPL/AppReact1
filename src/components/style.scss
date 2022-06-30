@@ -63,6 +63,14 @@
     transform: scale(1.5);
   }
 }
+@keyframes stravaLogo {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 
 //mixins
 @mixin notebook {
@@ -762,15 +770,6 @@ code {
   }
 }
 
-@keyframes stravaLogo {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 .fa-strava {
   font-size: 4rem;
   color: #fc5300;
@@ -781,44 +780,44 @@ code {
   border-radius: 1rem;
   background-color: #FC4C02;
   position: relative;
-}
 
-#strava::before {
-  content: '';
-  background-image:
-          /*chevron right leg*/
-          linear-gradient( -117deg, transparent 96px, white 97px 115px, transparent 116px),
-            /*chevron left leg*/
-          linear-gradient( 117deg, transparent 96px, white 97px 115px, transparent 116px);
-  background-position:
-          /*chevron right leg*/ 64px 0px,
-    /*chevron left leg*/ -36px 0px;
-  background-repeat: no-repeat;
-  width: 100px;
-  height: 86px;
-  bottom: 82px;
-  right: 66px;
-  position: absolute;
-  z-index: 1;
-  animation: stravaLogo 3s ease-in-out infinite alternate;
-}
+  &::before {
+    content: '';
+    background-image: /*chevron right leg*/
+            linear-gradient(-117deg, transparent 96px, white 97px 115px, transparent 116px),
+              /*chevron left leg*/
+            linear-gradient(117deg, transparent 96px, white 97px 115px, transparent 116px);
+    background-position: /*chevron right leg*/
+            64px 0px,
+              /*chevron left leg*/
+            -36px 0px;
+    background-repeat: no-repeat;
+    width: 100px;
+    height: 86px;
+    bottom: 82px;
+    right: 66px;
+    position: absolute;
+    z-index: 1;
+    animation: stravaLogo 3s ease-in-out infinite alternate;
+  }
 
-#strava::after {
-  content: '';
-  background-image:
-          /*chevron right leg*/
-          linear-gradient( -117deg, transparent 10px, #ffb08b 11px 24px, transparent 25px),
-            /*chevron left leg*/
-          linear-gradient( 117deg,transparent 10px, #ffb08b 11px 24px, transparent 25px);
-  background-position:
-          /*chevron right leg*/ -28px 0px,
-    /*chevron left leg*/ 28px 0px;
-  background-repeat: no-repeat;
-  height: 56px;
-  width: 57px;
-  top: 107px;
-  left: 82px;
-  position: absolute;
-  z-index: 1;
-  animation: stravaLogo 3s ease-in-out infinite alternate;
+  &::after {
+    content: '';
+    background-image: /*chevron right leg*/
+            linear-gradient(-117deg, transparent 10px, #ffb08b 11px 24px, transparent 25px),
+              /*chevron left leg*/
+            linear-gradient(117deg, transparent 10px, #ffb08b 11px 24px, transparent 25px);
+    background-position: /*chevron right leg*/
+            -28px 0px,
+              /*chevron left leg*/
+            28px 0px;
+    background-repeat: no-repeat;
+    height: 56px;
+    width: 57px;
+    top: 107px;
+    left: 82px;
+    position: absolute;
+    z-index: 1;
+    animation: stravaLogo 3s ease-in-out infinite alternate;
+  }
 }
