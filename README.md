@@ -1,6 +1,43 @@
-# Getting Started with Create React App
+# PlanYourRide
+PlanYourRide is the React App that makes it easy to see the weather forecast on your starred segments in Strava.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+`Sign In/ Sign Up`
+
+<img width="360" alt="Zrzut ekranu 2022-06-30 o 10 31 11" src="https://user-images.githubusercontent.com/94534923/176632373-cbed8248-a79f-4437-804f-71c85bf8c72a.png">
+
+`Authorizing App with Strava API`
+
+<img width="360" alt="Zrzut ekranu 2022-06-30 o 10 31 33" src="https://user-images.githubusercontent.com/94534923/176632438-818b0e28-dc41-44ca-b020-b05d89c2c71e.png">
+<img width="360" alt="Zrzut ekranu 2022-06-30 o 10 42 49" src="https://user-images.githubusercontent.com/94534923/176633673-b5c82717-dc0c-48eb-9a7a-854e0f70eabc.png">
+
+`Showing polylines of selected Segment imported from Strava API`
+
+<img width="360" alt="Zrzut ekranu 2022-06-30 o 10 32 44" src="https://user-images.githubusercontent.com/94534923/176632454-11a94918-519f-43c3-8e40-e15436dd0a3d.png">
+
+`Showing weather forecast using OpenWeatherMap API`
+
+<img width="360" alt="Zrzut ekranu 2022-06-30 o 10 32 56" src="https://user-images.githubusercontent.com/94534923/176632449-39ca8d01-b911-4e88-803d-77cee47d9905.png">
+
+## Feautures
+<li>Responsive design</li>
+<li>Saving and fetching data from the firestore</li>
+<li>React icons</li>
+<li>Mobile first</li>
+<li>Framer motion</li>
+<li>Login, signup, logout with firebase</li>
+<li>Login with Google</li>
+
+## Technologies
+<p align="left">
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/javascript-colored.svg" width="36" height="36" alt="Javascript" /></a>
+    <a href="https://nodejs.org/en/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/nodejs-colored.svg" width="36" height="36" alt="NodeJS" /></a>
+<a href="https://reactjs.org/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/react-colored.svg" width="36" height="36" alt="React" /></a>
+<a href="https://developer.mozilla.org/en-US/docs/Glossary/HTML5" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/html5-colored.svg" width="36" height="36" alt="HTML5" /></a>
+  <a href="https://www.w3.org/TR/CSS/#css" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/css3-colored.svg" width="36" height="36" alt="CSS3" /></a>
+<a href="https://sass-lang.com/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/sass-colored.svg" width="36" height="36" alt="Sass" /></a>
+<a href="https://webpack.js.org/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/webpack-colored.svg" width="36" height="36" alt="Webpack" /></a>
+<a href="https://firebase.google.com/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/firebase-colored.svg" width="36" height="36" alt="Firebase" /></a>
+</p>
 
 ## Available Scripts
 
@@ -33,38 +70,6 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 **Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### `npm run scss`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Compiles SASS file to css.
