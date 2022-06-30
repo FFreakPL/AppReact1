@@ -20,7 +20,8 @@ PlanYourRide is the React App that makes it easy to see the weather forecast on 
 
 ## Feautures
 <li>Responsive design</li>
-<li>Saving and fetching data from the firestore</li>
+<li>Fetching data from the Strava API</li>
+<li>Fetching data from OpenWeatherMap API</li>
 <li>React icons</li>
 <li>Mobile first</li>
 <li>Framer motion</li>
