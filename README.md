@@ -14,7 +14,7 @@ PlanYourRide is the React App that makes it easy to see the weather forecast on 
 
 <img width="360" alt="Zrzut ekranu 2022-06-30 o 10 32 44" src="https://user-images.githubusercontent.com/94534923/176632454-11a94918-519f-43c3-8e40-e15436dd0a3d.png">
 
-`Showing weather forecast using OpenWeatherAPI`
+`Showing weather forecast using OpenWeatherMap API`
 
 <img width="360" alt="Zrzut ekranu 2022-06-30 o 10 32 56" src="https://user-images.githubusercontent.com/94534923/176632449-39ca8d01-b911-4e88-803d-77cee47d9905.png">
 
