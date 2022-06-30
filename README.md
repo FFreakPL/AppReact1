@@ -40,6 +40,10 @@ PlanYourRide is the React App that makes it easy to see the weather forecast on 
 <a href="https://firebase.google.com/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/firebase-colored.svg" width="36" height="36" alt="Firebase" /></a>
 </p>
 
+## Running APP
+
+<a href="https://playnyourride.vercel.app">
+
 ## Available Scripts
 
 In the project directory, you can run:
